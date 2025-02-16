@@ -214,4 +214,3 @@ speakButton.addEventListener("click", handleSpeak);
         }
     });
   }, 1500)
-});
