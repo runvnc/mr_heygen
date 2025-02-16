@@ -44,7 +44,7 @@ function setLoading(show) {
 async function initializeAvatarSession() {
   const token = await fetchAccessToken();
   avatar = new StreamingAvatar({ token });
-
+  window.avatar = avatar;
   sessionData = await avatar.createStartAvatar({
     quality: AvatarQuality.Medium,
     // Ensure avatar background is transparent
@@ -195,6 +195,17 @@ async function toggleSession() {
     await terminateAvatarSession();
   }
 }
+
+window.registerCommandHandler('say', (data) => {
+  console.log('say()', data);
+    if (data.event == 'partial') {
+    } else {
+      window.avatar.speak({
+        text: data.text,
+        task_type: TaskType.REPEAT
+      });
+    }
+});
 
 // Event listeners for buttons
 startButton.addEventListener("click", toggleSession);
