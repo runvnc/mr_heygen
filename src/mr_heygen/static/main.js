@@ -200,9 +200,6 @@ async function toggleSession() {
 startButton.addEventListener("click", toggleSession);
 speakButton.addEventListener("click", handleSpeak);
 
-// run this after document loads
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Document loaded");
   setTimeout( () => {
     console.log("registering commands: say")
     window.registerCommandHandler('say', (data) => {
@@ -216,6 +213,5 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
     });
-  }, 500)
+  }, 1500)
 });
-
