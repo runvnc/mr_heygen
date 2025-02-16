@@ -196,18 +196,26 @@ async function toggleSession() {
   }
 }
 
-window.registerCommandHandler('say', (data) => {
-  console.log('say()', data);
-    if (data.event == 'partial') {
-      //
-    } else {
-      window.avatar.speak({
-        text: data.text,
-        task_type: TaskType.REPEAT
-      });
-    }
-});
-
 // Event listeners for buttons
 startButton.addEventListener("click", toggleSession);
 speakButton.addEventListener("click", handleSpeak);
+
+// run this after document loads
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Document loaded");
+  setTimeout( () => {
+    console.log("registering commands: say")
+    window.registerCommandHandler('say', (data) => {
+      console.log('say()', data);
+        if (data.event == 'partial') {
+          //
+        } else {
+          window.avatar.speak({
+            text: data.text,
+            task_type: TaskType.REPEAT
+          });
+        }
+    });
+  }, 500)
+});
+
