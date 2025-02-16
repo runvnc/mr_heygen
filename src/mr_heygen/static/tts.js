@@ -200,7 +200,7 @@ async function initTTS() {
       _deepgram = undefined;
     }
 
-    _deepgram = window.Deepgram.createClient(key);
+    _deepgram = createClient(key);
 
     socket = _deepgram.listen.live({ 
       model: "nova-2", smart_format: true,

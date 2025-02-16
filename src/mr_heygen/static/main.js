@@ -1,13 +1,7 @@
-// Wait for StreamingAvatar to be available
-if (!window.StreamingAvatar) {
-  console.error('StreamingAvatar library not loaded! Please check your internet connection.');
-  document.body.innerHTML = '<div style="color: red; padding: 20px;">Error: Required avatar service not available. Please refresh the page.</div>';
-  throw new Error('StreamingAvatar not loaded');
-}
-
-// Initialize once library is available
-const { StreamingAvatar, AvatarQuality, VoiceEmotion, StreamingEvents, TaskType } = window.StreamingAvatar;
-console.log('StreamingAvatar library loaded successfully');
+import StreamingAvatar, {
+  AvatarQuality, VoiceEmotion, StreamingEvents, TaskType
+} from '@heygen/streaming-avatar';
+console.log('StreamingAvatar imported successfully');
 
 // DOM elements
 const videoElement = document.getElementById("avatarVideo");
