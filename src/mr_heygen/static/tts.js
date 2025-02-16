@@ -1,5 +1,3 @@
-import { createClient } from "@deepgram/sdk";
-import delay from 'delay'
 
 const captions = window.document.getElementById("captions");
 
@@ -202,7 +200,7 @@ async function initTTS() {
       _deepgram = undefined;
     }
 
-    _deepgram = createClient(key);
+    _deepgram = window.Deepgram.createClient(key);
 
     socket = _deepgram.listen.live({ 
       model: "nova-2", smart_format: true,
@@ -244,7 +242,7 @@ async function initTTS() {
             if (!dontInterrupt) {
                 handleSpeak(transcript != "" ? transcript: userInput.value)
                 transcript = ""
-                await delay(100);
+                await new Promise(resolve => setTimeout(resolve, 100));
                 userInput.value = "";
               
             }
