@@ -1,3 +1,4 @@
+import {createClient} from "@deepgram/sdk";
 
 const captions = window.document.getElementById("captions");
 
