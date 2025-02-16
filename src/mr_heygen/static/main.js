@@ -199,6 +199,7 @@ async function toggleSession() {
 window.registerCommandHandler('say', (data) => {
   console.log('say()', data);
     if (data.event == 'partial') {
+      //
     } else {
       window.avatar.speak({
         text: data.text,
