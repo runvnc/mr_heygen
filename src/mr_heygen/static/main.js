@@ -203,9 +203,7 @@ startButton.addEventListener("click", toggleSession);
     console.log("registering commands: say")
     window.registerCommandHandler('say', (data) => {
       console.log('say()', data);
-        if (data.event == 'partial') {
-          //
-        } else {
+        if (data.event == 'running') {
           window.avatar.speak({
             text: data.args.text,
             task_type: TaskType.REPEAT
