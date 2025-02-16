@@ -4,16 +4,12 @@ import { resolve } from 'path'
 export default defineConfig({
   build: {
     outDir: 'static',
-    emptyOutDir: false, // Don't delete existing files in static/
+    emptyOutDir: false,
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'static/main.js'),
-        tts: resolve(__dirname, 'static/tts.js')
-      },
+      input: resolve(__dirname, 'static/main.js'),
       output: {
-        entryFileNames: '[name].bundle.js',
-        chunkFileNames: '[name].chunk.js',
-        assetFileNames: '[name].[ext]',
+        entryFileNames: 'bundle.js',
+        format: 'iife',
         dir: 'static'
       }
     }

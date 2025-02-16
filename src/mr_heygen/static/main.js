@@ -1,8 +1,10 @@
 import StreamingAvatar, {
   AvatarQuality, VoiceEmotion, StreamingEvents, TaskType
 } from '@heygen/streaming-avatar';
-console.log('StreamingAvatar imported successfully');
+import { createClient } from '@deepgram/sdk';
+import './tts.js';
 
+console.log('Libraries imported successfully');
 // DOM elements
 const videoElement = document.getElementById("avatarVideo");
 const startButton = document.getElementById("startSession");
