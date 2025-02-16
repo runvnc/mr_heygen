@@ -198,7 +198,6 @@ async function toggleSession() {
 
 // Event listeners for buttons
 startButton.addEventListener("click", toggleSession);
-speakButton.addEventListener("click", handleSpeak);
 
   setTimeout( () => {
     console.log("registering commands: say")
