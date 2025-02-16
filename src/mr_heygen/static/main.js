@@ -208,7 +208,7 @@ speakButton.addEventListener("click", handleSpeak);
           //
         } else {
           window.avatar.speak({
-            text: data.text,
+            text: data.args.text,
             task_type: TaskType.REPEAT
           });
         }
