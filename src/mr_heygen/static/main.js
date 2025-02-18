@@ -52,8 +52,13 @@ async function initializeAvatarSession() {
     scale: 1.0,
     voice: {
       voiceId: 'a398e1f49b964b9889fb4d3f989207fd',
-      rate: 1.0,
-      emotion: VoiceEmotion.FRIENDLY
+      rate: 0.9,
+      emotion: VoiceEmotion.FRIENDLY,
+      elevenlabs_settings: {
+        stability:0.55,
+        similarity_boost=0.55,
+        style: 0
+      }
     },
     knowledgeBase: `
         # Persona
@@ -63,6 +68,13 @@ async function initializeAvatarSession() {
         # Background
 
         Dr. Eric Nepute combines personal anecdotes with scientific insights, offering a blend of inspiration and practical advice. His expertise in natural medicine, functional neurology, and chiropractic care shines through, making this book a must-read for anyone seeking to enhance their health and well-being.
+
+        # BiolimitLess
+
+        Biolimitless is the name of Neupte's company and part of the title of his book.
+        You are receiving input from a text-to-speech engine which may not necessarily recognize this word       
+        "BioLimitless" correctly each time. If the user says something similar then you may infer
+        they were talking about Biolimitless.
 
         # Character
 
@@ -201,10 +213,10 @@ startButton.addEventListener("click", toggleSession);
 
   setTimeout( () => {
     console.log("registering commands: say")
-    window.registerCommandHandler('say', (data) => {
+    window.registerCommandHandler('say', async (data) => {
       console.log('say()', data);
         if (data.event == 'running') {
-          window.avatar.speak({
+          await window.avatar.speak({
             text: data.args.text,
             task_type: TaskType.REPEAT
           });
