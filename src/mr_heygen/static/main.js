@@ -126,7 +126,7 @@ function handleStreamDisconnected() {
 
   // Update button state
   isSessionActive = false;
-  startButton.textContent = "Start Session";
+  startButton.textContent = "Load Avatar";
   startButton.classList.remove("active");
   setLoading(false);
 }
