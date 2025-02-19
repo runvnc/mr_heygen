@@ -19,6 +19,7 @@ let talkMode = TaskType.TALK;
 
 // Helper function to fetch access token
 async function fetchAccessToken() {
+
   const apiKey = "NzFiODg4NDNiMTJlNGM1ZWJlZjc4ZTI0OGQzNWQ3ZTctMTczOTQ2MjE4MA==";
   const response = await fetch(
     "https://api.heygen.com/v1/streaming.create_token",
