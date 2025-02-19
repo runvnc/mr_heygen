@@ -52,12 +52,13 @@ async function initializeAvatarSession() {
     scale: 1.0,
     voice: {
       voiceId: 'a398e1f49b964b9889fb4d3f989207fd',
-      rate: 0.9,
+      rate: 0.5,
       emotion: VoiceEmotion.FRIENDLY,
       elevenlabs_settings: {
         stability:0.55,
-        similarity_boost=0.55,
-        style: 0
+        similarity_boost:0.55,
+        style: 0,
+        use_speaker_boost: false
       }
     },
     knowledgeBase: `
