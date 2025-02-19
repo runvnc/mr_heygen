@@ -46,10 +46,10 @@ async function initializeAvatarSession() {
   avatar = new StreamingAvatar({ token });
   window.avatar = avatar;
   sessionData = await avatar.createStartAvatar({
-    quality: AvatarQuality.Medium,
+    quality: AvatarQuality.Low,
     // Ensure avatar background is transparent
     transparent: true,
-    scale: 1.0,
+    scale: 1.5,
     voice: {
       voiceId: 'a398e1f49b964b9889fb4d3f989207fd',
       rate: 0.95,
@@ -58,7 +58,7 @@ async function initializeAvatarSession() {
         stability:0.55,
         similarity_boost:0.55,
         style: 0,
-        use_speaker_boost: false
+        use_speaker_boost: true
       }
     },
     knowledgeBase: `
