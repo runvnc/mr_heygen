@@ -159,7 +159,11 @@ async function handleSpeak(text) {
 
 async function shutUp() {
   if (avatar) {
-    await avatar.interrupt();
+    try {
+      await avatar.interrupt();
+    } catch (e) {
+      //console.error("Error interrupting avatar", e);
+    }
   }
 }
 
