@@ -52,7 +52,7 @@ async function initializeAvatarSession() {
     scale: 1.0,
     voice: {
       voiceId: 'a398e1f49b964b9889fb4d3f989207fd',
-      rate: 0.5,
+      rate: 0.95,
       emotion: VoiceEmotion.FRIENDLY,
       elevenlabs_settings: {
         stability:0.55,
