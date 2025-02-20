@@ -12,7 +12,7 @@ HEYGEN_API_KEY = os.getenv("HEY_API_KEY")
 
 router = APIRouter()
 
-@router.get("/mr_heygen/tempkey", response_class=HTMLResponse)
+@router.get("/heygen/tempkey", response_class=HTMLResponse)
 async def get_tempkey(request: Request):
     user = request.state.user if hasattr(request.state, "user") else {"username": "guest"}
 

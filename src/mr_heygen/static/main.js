@@ -16,20 +16,12 @@ let sessionData = null;
 let isSessionActive = false;
 let talkMode = TaskType.TALK;
 
-// Helper function to fetch access token
 async function fetchAccessToken() {
 
   const apiKey = "NzFiODg4NDNiMTJlNGM1ZWJlZjc4ZTI0OGQzNWQ3ZTctMTczOTQ2MjE4MA==";
-  const response = await fetch(
-    "https://api.heygen.com/v1/streaming.create_token",
-    {
-      method: "POST",
-      headers: { "x-api-key": apiKey },
-    }
-  );
+  const response = await fetch("/heygen/tempkey")
 
-  const { data } = await response.json();
-  return data.token;
+  return await response.text()
 }
 
 // Show/hide loading spinner
