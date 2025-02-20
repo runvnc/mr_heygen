@@ -117,6 +117,8 @@ class AvatarSettings extends BaseEl {
 
     // Set up the observer
     this.observer = new MutationObserver((mutations) => {
+      console.log("Mutation observed")
+      console.log({mutations})
       for (const mutation of mutations) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'name') {
           console.log('name changed');
