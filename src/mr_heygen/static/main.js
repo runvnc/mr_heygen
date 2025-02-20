@@ -95,8 +95,10 @@ async function terminateAvatarSession() {
 
 // Handle speaking event
 async function handleSpeak(text) {
+  // print a banner in yellow with blue background
+  console.log("%c handleSpeak", "color: yellow; background-color: blue", "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
   console.log("handleSpeak", text)
-  debugLog("handleSpeak")
+  debugLog("handleSpeak...............................")
   let input = text || userInput.value;
   if (text) {
     userInput.value = text;
