@@ -146,6 +146,8 @@ class AvatarSettings extends BaseEl {
       const data = await response.json();
       console.log("Loaded settings for persona:", this.persona, data);
       this.settings = data;
+      console.log("this.settings:", this.settings)
+      this.requestUpdate();
     } catch (error) {
       console.error("Failed to load avatar settings:", error);
     }
@@ -224,6 +226,8 @@ class AvatarSettings extends BaseEl {
   }
 
   _render() {
+    if (!this.settings) return html`<p>HeyGen settings loading...</p>`;
+    if (!this.settings.avatarName) return html`<p>HeyGen settings: no avatarName. Settings: <pre>${JSON.stringify(this.settings)}</pre></p>`;
     return html`
       <form class="settings-form" @submit=${this.handleSubmit}>
           <h2>HeyGen Video Avatar</h2>
