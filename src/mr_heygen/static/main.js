@@ -2,6 +2,7 @@ import StreamingAvatar, {
   AvatarQuality, VoiceEmotion, StreamingEvents, TaskType
 } from '@heygen/streaming-avatar';
 import './tts.js';
+import {debugLog} from './debugoverlay.js';
 
 console.log('Libraries imported successfully');
 // DOM elements
@@ -92,17 +93,21 @@ async function terminateAvatarSession() {
 
 // Handle speaking event
 async function handleSpeak(text) {
+  console.log("handleSpeak", text)
+  debugLog("handleSpeak")
   let input = text || userInput.value;
   if (text) {
     userInput.value = text;
   }
+  debugLog("2")
   if (avatar && input) {
     console.log("%c would send this text: ", "color: yellow; background-color: blue", input);
-
+    debugLog("3")
     await avatar.speak({
       text: input,
       task_type: talkMode
     });
+    debugLog("4")
     userInput.value = ""; // Clear input after speaking
   }
 }
