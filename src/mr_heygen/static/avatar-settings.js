@@ -1,6 +1,6 @@
 import { LitElement, html, css } from './lit-core.min.js';
 import { BaseEl } from './base.js';
-import './toggle-switch.js';
+//import './toggle-switch.js';
 
 class AvatarSettings extends BaseEl {
   static properties = {
@@ -83,6 +83,7 @@ class AvatarSettings extends BaseEl {
   constructor() {
     super();
     this.loading = false;
+    console.log("avatar-settings constructor")
     this.settings = {
       quality: 'low',
       transparent: true,
