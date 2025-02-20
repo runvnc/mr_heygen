@@ -34,7 +34,7 @@ function setLoading(show) {
 async function initializeAvatarSession() {
   const token = await fetchAccessToken();
   avatar = new StreamingAvatar({ token });
-  const data = await fetch("/heygen/avatar-settings")
+  const data = await fetch(`/heygen/avatar-settings/{window.personaName}`)
   const avatarSettings = await data.json();
   window.avatar = avatar;
   sessionData = await avatar.createStartAvatar(avatarSettings);
