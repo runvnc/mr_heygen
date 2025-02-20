@@ -239,9 +239,9 @@ section[role="group"] {
   margin: 21px;
 }
 
-#debug-overlay {
+#debug-overlay2 {
   position: fixed;
-  top: 20px;
+  top: 60vh;
   right: 20px;
   background: rgba(255, 0, 0, 0.9);
   color: white;

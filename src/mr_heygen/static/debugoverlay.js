@@ -1,6 +1,6 @@
 export function debugLog(msg) {
     try {
-      const overlay = document.getElementById('debug-overlay');
+      const overlay = document.getElementById('debug-overlay2');
       //if (!overlay) return;
       console.log('Debug:', msg); // Backup console log
       const line = document.createElement('div');

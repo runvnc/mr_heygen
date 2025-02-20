@@ -4,6 +4,8 @@ import StreamingAvatar, {
 import './tts.js';
 import {debugLog} from './debugoverlay.js';
 
+debugLog("Hello from HeyGen plugin")
+
 console.log('Libraries imported successfully');
 // DOM elements
 const videoElement = document.getElementById("avatarVideo");
