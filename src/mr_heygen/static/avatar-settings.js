@@ -142,7 +142,7 @@ class AvatarSettings extends BaseEl {
     if (!this.persona) return;
     
     try {
-      const response = await fetch(`/mr_heygen/avatarsettings/${this.persona}`);
+      const response = await fetch(`/heygen/avatarsettings/${this.persona}`);
       const data = await response.json();
       console.log("Loaded settings for persona:", this.persona, data);
       this.settings = data;
@@ -196,7 +196,7 @@ class AvatarSettings extends BaseEl {
     try {
       this.loading = true;
       
-      const response = await fetch(`/mr_heygen/avatarsettings/${this.settings.persona}`, {
+      const response = await fetch(`/heygen/avatarsettings/${this.settings.persona}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
