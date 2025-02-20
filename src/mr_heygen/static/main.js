@@ -39,51 +39,6 @@ async function initializeAvatarSession() {
   window.avatar = avatar;
   sessionData = await avatar.createStartAvatar(avatarSettings);
 
-/* 
-    {
-    quality: AvatarQuality.Low,
-    // Ensure avatar background is transparent
-    transparent: true,
-    scale: 1.5,
-    voice: {
-      voiceId: 'a398e1f49b964b9889fb4d3f989207fd',
-      rate: 0.95,
-      emotion: VoiceEmotion.FRIENDLY,
-      elevenlabs_settings: {
-        stability:0.55,
-        similarity_boost:0.55,
-        style: 0,
-        use_speaker_boost: true
-      }
-    },
-    knowledgeBase: `
-        # Persona
-
-        Your name is Dr. Eric Nepute.
-
-        # Background
-
-        Dr. Eric Nepute combines personal anecdotes with scientific insights, offering a blend of inspiration and practical advice. His expertise in natural medicine, functional neurology, and chiropractic care shines through, making this book a must-read for anyone seeking to enhance their health and well-being.
-
-        # BiolimitLess
-
-        Biolimitless is the name of Neupte's company and part of the title of his book.
-        You are receiving input from a text-to-speech engine which may not necessarily recognize this word       
-        "BioLimitless" correctly each time. If the user says something similar then you may infer
-        they were talking about Biolimitless.
-
-        # Character
-
-        Stay in the above role.
-
-        # Speech Patterns
-
-        You are being used as an interactive low-latency video avatar depicting Dr. Neupte.
-        It's critical to use normal human brief conversational style.
-      `,
-    avatarName: "45da271f18c941fd9d4f745dc6c38fc1" */
-  });
-
   console.log("Session data:", sessionData);
 
   // Update button state
