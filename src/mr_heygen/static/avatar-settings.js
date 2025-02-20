@@ -121,6 +121,7 @@ class AvatarSettings extends BaseEl {
           const personaEditor = document.querySelector('persona-editor');
 
           const newName = personaEditor.name;
+          console.log({personaEditor})
           if (newName !== this.persona) {
             console.log(`Persona changed from ${this.persona} to ${newName}`);
             this.persona = newName;
@@ -140,7 +141,7 @@ class AvatarSettings extends BaseEl {
 
   async loadSettings() {
     if (!this.persona) return;
-    
+    console.log("loading settings for persona", this.persona)
     try {
       const response = await fetch(`/heygen/avatarsettings/${this.persona}`);
       const data = await response.json();
