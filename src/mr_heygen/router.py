@@ -56,14 +56,15 @@ async def get_avatarsettings(request: Request, persona_name: str):
     heygen_path = os.path.join(pwd, 'personas', 'local', user.username, persona_name, 'heygen.json')
     # if there is no file, return default settings
     if not os.path.exists(heygen_path):
+        print(f"Heygen: file not found: {heygen_path}. returning default avatar settings")
         return {
-            "quality": "AvatarQuality.Medium",
+            "quality": "medium",
             "transparent": True,
             "scale": 1.5,
             "voice": {
                 "voiceId": "166aa8d7acd1495a839d34024ccb1505",
                 "rate": 1.0,
-                "emotion": "VoiceEmotion.FRIENDLY",
+                "emotion": "friendly",
                 "elevenlabs_settings": {
                     "stability": 0.55,
                     "similarity_boost": 0.55,
