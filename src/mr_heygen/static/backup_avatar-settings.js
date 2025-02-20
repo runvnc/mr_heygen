@@ -84,62 +84,12 @@ class AvatarSettings extends BaseEl {
   constructor() {
     super();
     this.loading = false;
-    this.observer = null;
-    this.initializePersonaObserver();
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.initializePersonaObserver();
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-  }
-
-  initializePersonaObserver() {
-    const personaEditor = document.querySelector('persona-editor');
-    if (!personaEditor) return;
-
-    this.persona = personaEditor.name;
-    this.loadSettings();
-
-    // Set up the observer
-    this.observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'name') {
-          const newName = personaEditor.name;
-          if (newName !== this.persona) {
-            console.log(`Persona changed from ${this.persona} to ${newName}`);
-            this.persona = newName;
-            this.loadSettings();
-          }
-        }
-      }
-    });
-
-    // Start observing
-    this.observer.observe(personaEditor, {
-      attributes: true,
-      attributeFilter: ['name']
-    });
-  }
-
-  async loadSettings() {
-    if (!this.persona) return;
-    
-    try {
-      const response = await fetch(`/mr_heygen/avatarsettings/${this.persona}`);
-      const data = await response.json();
-      console.log("Loaded settings for persona:", this.persona, data);
-      this.settings = data;
-    } catch (error) {
-      console.error("Failed to load avatar settings:", error);
-      // Set default settings if fetch fails
-      this.settings = {
+    console.log("avatar-settings constructor")
+    const personaEditor = document.querySelector('persona-editor')
+    this.persona = personaEditor.name
+    console.log("persona", this.persona)
+    /*
+    this.settings = {
       quality: 'low',
       transparent: true,
       scale: 1.5,
@@ -154,8 +104,15 @@ class AvatarSettings extends BaseEl {
           use_speaker_boost: true
         }
       }
-      };
-    }
+    };
+    */
+    // actually fetch from server now
+    let data = fetch(`/mr_heygen/avatarsettings/${this.persona}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.settings = data;
+    })
   }
 
   handleInputChange(event) {
