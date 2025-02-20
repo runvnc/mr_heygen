@@ -25,7 +25,7 @@ async def get_tempkey(request: Request):
     response = requests.post(url, headers=headers)
     data = response.json()
     print(data)
-    return data["token"]
+    return data["data"]["token"]
 
 ex = """
     {
