@@ -8,7 +8,7 @@ from loguru import logger
 from dotenv import load_dotenv
 load_dotenv(override=True)
 
-HEYGEN_API_KEY = os.getenv("HEY_API_KEY")
+HEYGEN_API_KEY = os.getenv("HEYGEN_API_KEY")
 
 router = APIRouter()
 
