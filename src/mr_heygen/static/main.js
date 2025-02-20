@@ -172,15 +172,16 @@ async function toggleSession() {
   }
 }
 
+let addedSay = false
 // Event listeners for buttons
 startButton.addEventListener("click", () => {
     toggleSession()
-
-    if (window.commandHandlers['say']) {
-      console.log("already added command handler for heygen")
+    if (addedSay) {
+      console.log("added say handler already")
       return
     }
     console.log("registering commands: say")
+    addedSay = true
     window.registerCommandHandler('say', async (data) => {
       console.log('say()', data);
         if (data.event == 'running') {
