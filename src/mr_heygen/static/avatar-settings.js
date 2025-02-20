@@ -129,12 +129,13 @@ class AvatarSettings extends BaseEl {
         }
       }
     });
-
+    console.log("defined observer")
     // Start observing
     this.observer.observe(personaEditor, {
       attributes: true,
       attributeFilter: ['name']
     });
+    console.log("Observing persona editor")
   }
 
   async loadSettings() {
