@@ -111,8 +111,6 @@ class AvatarSettings extends BaseEl {
       console.warn('Persona name not found');
     }
 
-    if (this.persona && this.persona != "") this.loadSettings();
-
     this.observer = new MutationObserver((mutations) => {
       console.log("Mutation observed")
       console.log({mutations})
