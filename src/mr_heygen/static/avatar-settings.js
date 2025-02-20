@@ -199,7 +199,7 @@ class AvatarSettings extends BaseEl {
     try {
       this.loading = true;
       
-      const response = await fetch(`/heygen/avatarsettings/${this.settings.persona}`, {
+      const response = await fetch(`/heygen/avatarsettings/${this.persona}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
