@@ -184,11 +184,6 @@ class AvatarSettings extends BaseEl {
           }
         }
       };
-      this.settings.voice.rate *= 1.0;
-      this.settings.scale *= 1.0;
-      this.settings.voice.elevenlabs_settings.stability *= 1.0;
-      this.settings.voice.elevenlabs_settings.similarity_boost *= 1.0;
-      this.settings.voice.elevenlabs_settings.style *= 1;
       return;
     }
 
@@ -203,6 +198,11 @@ class AvatarSettings extends BaseEl {
     
     try {
       this.loading = true;
+      this.settings.voice.rate *= 1.0;
+      this.settings.scale *= 1.0;
+      this.settings.voice.elevenlabs_settings.stability *= 1.0;
+      this.settings.voice.elevenlabs_settings.similarity_boost *= 1.0;
+      this.settings.voice.elevenlabs_settings.style *= 1;
       
       const response = await fetch(`/heygen/avatarsettings/${this.persona}`, {
         method: 'POST',
