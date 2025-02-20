@@ -1,7 +1,6 @@
 import StreamingAvatar, {
   AvatarQuality, VoiceEmotion, StreamingEvents, TaskType
 } from '@heygen/streaming-avatar';
-import { createClient } from '@deepgram/sdk';
 import './tts.js';
 
 console.log('Libraries imported successfully');
