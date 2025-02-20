@@ -48,7 +48,7 @@ ex = """
 """
 
 
-@router.get("/heygen/avatarsettings/{persona_name}", response_class=JSONResponse):
+@router.get("/heygen/avatarsettings/{persona_name}", response_class=JSONResponse)
 async def get_avatarsettings(request: Request, persona_name: str):
     user = request.state.user if hasattr(request.state, "user") else {"username": "guest"}
     pwd = os.getcwd()
