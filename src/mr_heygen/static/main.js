@@ -173,17 +173,30 @@ async function toggleSession() {
 }
 
 // Event listeners for buttons
-startButton.addEventListener("click", toggleSession);
+startButton.addEventListener("click", () => {
+    toggleSession()
 
-  setTimeout( () => {
+    if (window.commandHandlers['say']) {
+      console.log("already added command handler for heygen")
+      return
+    }
     console.log("registering commands: say")
     window.registerCommandHandler('say', async (data) => {
       console.log('say()', data);
         if (data.event == 'running') {
-          await window.avatar.speak({
-            text: data.args.text,
-            task_type: TaskType.REPEAT
-          });
+          try {
+            debugLog("handleSpeak...............................")
+            debugLog(data.args.text)
+            await window.avatar.speak({
+              text: data.args.text,
+              task_type: TaskType.REPEAT
+            });
+            debugLog("sent text to avatar")
+          } catch (e) {
+            console.error("Error speaking", e);
+            debugLog("Error speaking " + JSON.stringify(e))
+          }
         }
     });
-  }, 1500)
+})
+
