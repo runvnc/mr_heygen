@@ -5,7 +5,8 @@ import { BaseEl } from './base.js';
 class AvatarSettings extends BaseEl {
   static properties = {
     settings: { type: Object },
-    loading: { type: Boolean }
+    loading: { type: Boolean },
+    persona: { type: String }
   };
 
   static styles = css`
@@ -84,6 +85,10 @@ class AvatarSettings extends BaseEl {
     super();
     this.loading = false;
     console.log("avatar-settings constructor")
+    const personaEditor = document.querySelector('persona-editor')
+    this.persona = personaEditor.name
+    console.log("persona", this.persona)
+    /*
     this.settings = {
       quality: 'low',
       transparent: true,
@@ -100,6 +105,14 @@ class AvatarSettings extends BaseEl {
         }
       }
     };
+    */
+    // actually fetch from server now
+    let data = fetch(`/mr_heygen/avatarsettings/${this.persona}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.settings = data;
+    })
   }
 
   handleInputChange(event) {
@@ -147,8 +160,7 @@ class AvatarSettings extends BaseEl {
     try {
       this.loading = true;
       
-      // TODO: Implement actual save endpoint
-      const response = await fetch(`/mr_heygen/avatar/${this.settings.name}`, {
+      const response = await fetch(`/mr_heygen/avatarsettings/${this.settings.persona}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -178,7 +190,19 @@ class AvatarSettings extends BaseEl {
   _render() {
     return html`
       <form class="settings-form" @submit=${this.handleSubmit}>
+          <h2>HeyGen Video Avatar</h2>
+
         <div class="form-group">
+          <label>Avatar ID</label>
+          <input type="text"
+                  name="avatarName"
+                  .value=${this.settings.avatarName}
+                  @input=${this.handleInputChange}>
+        </div>
+
+
+        <div class="form-group">
+
           <label>Quality:</label>
           <select name="quality" 
                   .value=${this.settings.quality} 
@@ -220,12 +244,13 @@ class AvatarSettings extends BaseEl {
         <div class="form-group">
           <label>Voice Settings:</label>
           <div class="sub-group">
+
             <div class="form-group">
-              <label>Voice ID:</label>
+              <label>Voice ID</label>
               <input type="text"
-                     name="voice.voiceId"
-                     .value=${this.settings.voice.voiceId}
-                     @input=${this.handleInputChange}>
+                      name="voice.voiceId"
+                      .value=${this.settings.voice.voiceId}
+                      @input=${this.handleInputChange}>
             </div>
 
             <div class="form-group">

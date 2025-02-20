@@ -34,8 +34,13 @@ function setLoading(show) {
 async function initializeAvatarSession() {
   const token = await fetchAccessToken();
   avatar = new StreamingAvatar({ token });
+  const data = await fetch("/heygen/avatar-settings")
+  const avatarSettings = await data.json();
   window.avatar = avatar;
-  sessionData = await avatar.createStartAvatar({
+  sessionData = await avatar.createStartAvatar(avatarSettings);
+
+/* 
+    {
     quality: AvatarQuality.Low,
     // Ensure avatar background is transparent
     transparent: true,
@@ -76,7 +81,7 @@ async function initializeAvatarSession() {
         You are being used as an interactive low-latency video avatar depicting Dr. Neupte.
         It's critical to use normal human brief conversational style.
       `,
-    avatarName: "45da271f18c941fd9d4f745dc6c38fc1"
+    avatarName: "45da271f18c941fd9d4f745dc6c38fc1" */
   });
 
   console.log("Session data:", sessionData);
