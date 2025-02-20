@@ -8,5 +8,5 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log({heygenAdmin})
     savebtn.parentNode.insertBefore(heygenAdmin, savebtn)
   }, 1000)
-}
+})
  
