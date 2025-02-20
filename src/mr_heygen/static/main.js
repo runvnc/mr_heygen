@@ -17,8 +17,6 @@ let isSessionActive = false;
 let talkMode = TaskType.TALK;
 
 async function fetchAccessToken() {
-
-  const apiKey = "NzFiODg4NDNiMTJlNGM1ZWJlZjc4ZTI0OGQzNWQ3ZTctMTczOTQ2MjE4MA==";
   const response = await fetch("/heygen/tempkey")
 
   return await response.text()
