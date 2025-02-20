@@ -102,15 +102,27 @@ class AvatarSettings extends BaseEl {
 
   initializePersonaObserver() {
     const personaEditor = document.querySelector('persona-editor');
-    if (!personaEditor) return;
+    if (!personaEditor) {
+      console.warn('Persona editor not found');
+      return;
+    }
 
     this.persona = personaEditor.name;
+    if (!this.persona) {
+      console.warn('Persona name not found');
+      return;
+    }
+
     this.loadSettings();
 
     // Set up the observer
     this.observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'name') {
+          console.log('name changed');
+          console.log({mutation})
+          const personaEditor = document.querySelector('persona-editor');
+
           const newName = personaEditor.name;
           if (newName !== this.persona) {
             console.log(`Persona changed from ${this.persona} to ${newName}`);
@@ -138,23 +150,6 @@ class AvatarSettings extends BaseEl {
       this.settings = data;
     } catch (error) {
       console.error("Failed to load avatar settings:", error);
-      // Set default settings if fetch fails
-      this.settings = {
-      quality: 'low',
-      transparent: true,
-      scale: 1.5,
-      voice: {
-        voiceId: 'a398e1f49b964b9889fb4d3f989207fd',
-        rate: 0.95,
-        emotion: 'friendly',
-        elevenlabs_settings: {
-          stability: 0.55,
-          similarity_boost: 0.55,
-          style: 0,
-          use_speaker_boost: true
-        }
-      }
-      };
     }
   }
 
