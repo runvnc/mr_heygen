@@ -104,18 +104,15 @@ class AvatarSettings extends BaseEl {
     const personaEditor = document.querySelector('persona-editor');
     if (!personaEditor) {
       console.warn('Persona editor not found');
-      return;
     }
 
     this.persona = personaEditor.name;
     if (!this.persona) {
       console.warn('Persona name not found');
-      return;
     }
 
-    this.loadSettings();
+    if (this.persona && this.persona != "") this.loadSettings();
 
-    // Set up the observer
     this.observer = new MutationObserver((mutations) => {
       console.log("Mutation observed")
       console.log({mutations})
