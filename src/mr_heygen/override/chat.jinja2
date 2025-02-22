@@ -10,7 +10,10 @@
       <article>
         <!-- use logo.png as poster image -->
         <div id="loading" class="loading"><div class="loading-spinner"></div></div>
-        <video id="animation" src="static/biolimitless.mp4" muted autoplay playsinline loop></video>
+        <video id="animation" src="/imgs/xheygenloading.mp4" 
+               onerror="this.style.display='none'" 
+               onloadeddata="this.style.display='block'" 
+               muted autoplay playsinline loop></video>
         <video id="avatarVideo" autoplay playsinline></video>
       </article>
 
