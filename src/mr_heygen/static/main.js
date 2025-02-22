@@ -27,11 +27,16 @@ async function fetchAccessToken() {
 
 // Show/hide loading spinner
 function setLoading(show) {
-  const loadingElement = document.getElementById("loading");
-  window.loadingElement = loadingElement
-  if (loadingElement) {
+  const animation = document.getElementById("animation");
+  if (animation && animation.readyState >= 2) {
+    animation.style.display = show ? 'block' : 'none';
+  } else {
+    const loadingElement = document.getElementById("loading");
+    window.loadingElement = loadingElement
+    if (loadingElement) {
 
-    loadingElement.classList.toggle("active", show);
+      loadingElement.classList.toggle("active", show);
+    }
   }
 }
 
