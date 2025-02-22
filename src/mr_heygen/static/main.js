@@ -28,7 +28,9 @@ async function fetchAccessToken() {
 // Show/hide loading spinner
 function setLoading(show) {
   const loadingElement = document.getElementById("loading");
+  window.loadingElement = loadingElement
   if (loadingElement) {
+
     loadingElement.classList.toggle("active", show);
   }
 }
