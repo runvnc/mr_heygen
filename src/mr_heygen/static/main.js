@@ -4,7 +4,6 @@ import StreamingAvatar, {
 import './tts.js';
 import {debugLog} from './debugoverlay.js';
 
-const authenticatedFetch = window.authenticatedFetch
 
 
 debugLog("Hello from HeyGen plugin")
@@ -23,7 +22,7 @@ let isSessionActive = false;
 let talkMode = TaskType.TALK;
 
 async function fetchAccessToken() {
-  const response = await authenticatedFetch("/heygen/tempkey")
+  const response = await window.authenticatedFetch("/heygen/tempkey")
 
   return await response.text()
 }
@@ -42,7 +41,7 @@ function setLoading(show) {
 async function initializeAvatarSession() {
   const token = await fetchAccessToken();
   avatar = new StreamingAvatar({ token });
-  const data = await authenticatedFetch(`/heygen/avatarsettings/${window.persona}`)
+  const data = await window.authenticatedFetch(`/heygen/avatarsettings/${window.persona}`)
   const avatarSettings = await data.json();
   window.avatar = avatar;
   sessionData = await avatar.createStartAvatar(avatarSettings);
