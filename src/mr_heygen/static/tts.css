@@ -263,12 +263,12 @@ section[role="group"] {
   white-space: pre-wrap;
 }
 
-.inp_message {
+#inp_message {
   border-radius: 0;
   border: none;
 }
 
 .send_msg {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
