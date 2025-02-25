@@ -78,14 +78,14 @@ section {
 .session-toggle {
   background: transparent;
   border: 2px solid #50cddd;
-  border-radius: 30px;
+  border-radius: 25px;
   color: #50cddd;
-  padding: 8px 20px;
-  font-size: 1rem;
+  padding: 4px 10px;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 1rem auto;
-  min-width: 150px;
+  min-width: 100px;
   position: relative;
   overflow: hidden;
 }
