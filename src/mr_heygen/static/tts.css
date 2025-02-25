@@ -77,7 +77,8 @@ section {
 /* Session toggle button styling */
 .session-toggle {
   background: transparent;
-  border: 2px solid #50cddd;
+  /* border: 2px solid #50cddd; */
+  border: 2px dotted #50cddd;
   border-radius: 25px;
   color: #50cddd;
   padding: 4px 10px;
