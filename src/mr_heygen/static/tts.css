@@ -263,5 +263,12 @@ section[role="group"] {
   white-space: pre-wrap;
 }
 
+.inp_message {
+  border-radius: 0;
+  border: none;
+}
 
-1
+.send_msg {
+  border-radius: 0;
+}
+
