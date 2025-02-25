@@ -27,16 +27,11 @@ async function fetchAccessToken() {
 
 // Show/hide loading spinner
 function setLoading(show) {
-  const animation = document.getElementById("animation");
-  if (animation && animation.readyState >= 2) {
+  try {
+    const animation = document.getElementById("animation");
     animation.style.display = show ? 'block' : 'none';
-  } else {
-    const loadingElement = document.getElementById("loading");
-    window.loadingElement = loadingElement
-    if (loadingElement) {
-
-      loadingElement.classList.toggle("active", show);
-    }
+  } catch (e) {
+    console.error("Error setting loading animation visibility", e);
   }
 }
 
@@ -60,16 +55,27 @@ async function initializeAvatarSession() {
   avatar.on(StreamingEvents.STREAM_DISCONNECTED, handleStreamDisconnected);
 }
 
+
+function hideLoadingAndStartPlaying() {
+  try {
+    videoElement.style.display = 'block';
+    videoElement.play().catch(console.error);
+    animation.style.display = 'none';
+    setLoading(false);
+  } catch (e) {
+    console.warn("Could not start video (maybe already playing)", e);
+  }
+}
+
 // Handle when avatar stream is ready
 function handleStreamReady(event) {
   if (event.detail && videoElement) {
     videoElement.srcObject = event.detail;
-    videoElement.onloadedmetadata = () => {
-      videoElement.play().catch(console.error);
-      videoElement.style.display = 'block';
-      animation.style.display = 'none';
-      setLoading(false);
-    };
+    videoElement.onloadedmetadata = hideLoadingAndStartPlaying;
+    if (videoElement.readyState >= 2) {
+      hideLoadingAndStartPlaying();
+    }
+    setTimeout(hideLoadingAndStartPlaying, 5000);
   } else {
     console.error("Stream is not available");
   }
