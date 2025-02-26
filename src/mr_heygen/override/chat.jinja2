@@ -1,13 +1,13 @@
-  {% block content %}
-    <div class="main" >
-         <!-- <div id="debug-overlay2">DEBUG READY</div> -->
+{% block content %}
+  <div class="main" style="height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
+    <!-- <div id="debug-overlay2">DEBUG READY</div> -->
 
- <main
+    <main
       class="container"
-      style="display: flex; flex-direction: column; align-items: center; padding: 0; margin: 0; "
+      style="display: flex; flex-direction: column; align-items: center; padding: 0; margin: 0; flex: 1 0 auto;"
     >
       <!-- Video Section -->
-      <article>
+      <article style="width: 100%;">
         <div id="loading" class="loading"><div class="loading-spinner"></div></div>
         <video id="animation" src="/imgs/heygenloading.mp4"
                style="display: none;" 
@@ -19,12 +19,11 @@
       <!-- Controls Section -->
       <section>
         <button id="startSession" class="session-toggle">Load Avatar</button>
-
+      </section>
     </main>
-        <chat-ai sessionid="{{ log_id }}" style="height: 34vh !important;" agent_name="{{ agent_name }}"></chat-ai>
-    </div>
+    
+    <chat-ai sessionid="{{ log_id }}" style="flex: 1 1 auto; min-height: 0; overflow: auto;" agent_name="{{ agent_name }}"></chat-ai>
+  </div>
 
-    <script src="/mr_heygen/static/bundle.js"></script>
-  
-    {% endblock %}
-
+  <script src="/mr_heygen/static/bundle.js"></script>
+{% endblock %}
