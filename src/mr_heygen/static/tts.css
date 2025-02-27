@@ -36,15 +36,15 @@ main.container {
 }
 
 video {
-  flex: 6;
+  height: 480px;
   width: 100%;
   padding: 0;
   margin: 0;
   border: none;
 }
 
-article { 
-  min-height: 40vh;
+article {
+  flex: 6;
   padding: 0;
   margin: 0;
   width: 100%;
