@@ -39,6 +39,8 @@ chat-log {
   width: 100%;
   background: #000000;
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 main.container {
@@ -126,7 +128,7 @@ section {
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   position: relative;
   z-index: 10;
 }
@@ -170,8 +172,8 @@ section {
 chat-tts {
   position: relative;
   z-index: 20;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /* Debug overlay */
@@ -204,37 +206,68 @@ chat-tts {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
   
   main.container {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0;
   }
   
   article {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 40vh;
-    max-height: 60vh;
+    min-height: auto;
+    max-height: 50vh;
   }
   
   video {
-    max-height: 60vh;
+    max-height: 50vh;
     width: 100%;
     object-fit: contain;
   }
   
   section {
-    padding: 0.5rem 0;
+    padding: 0;
+    margin: 0;
   }
   
   chat-ai {
     min-height: 0 !important;
     max-height: 30vh !important;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  /* Compact layout for mobile */
+  .load-section {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  /* Center the entire content vertically */
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Reduce spacing between elements */
+  .object {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  
+  /* Make chat input area more compact */
+  chat-ai {
+    margin-bottom: 0;
   }
 }
 
@@ -244,6 +277,7 @@ chat-tts {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   
   main.container {
@@ -287,7 +321,8 @@ chat-tts {
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 30;
 }
@@ -300,4 +335,40 @@ chat-ai {
   width: 100%;
   position: relative;
   z-index: 10;
+}
+
+/* Additional mobile optimizations to reduce spacing */
+@media (max-width: 768px) {
+  /* Compact everything vertically */
+  .main {
+    justify-content: center;
+  }
+  
+  /* Make the video take up appropriate space */
+  article {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+  
+  /* Reduce spacing between elements */
+  section.load-section {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Adjust button spacing */
+  .session-toggle {
+    margin: 5px 0;
+  }
+  
+  /* Make microphone button closer to other elements */
+  chat-tts {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  /* Ensure the chat input is close to the microphone */
+  chat-ai {
+    margin-top: 0;
+  }
 }
