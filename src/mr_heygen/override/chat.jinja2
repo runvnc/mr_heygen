@@ -85,8 +85,11 @@
             if (isMobileDevice) {
               console.log("hiding input field")
               inputField.disabled = true;
-              inputField.placeholder = 'Use voice input on mobile';
+              //inputField.placeholder = 'Use voice input on mobile';
             }
+          }
+          if (!isMobileDevice) {
+            document.querySelector('article').style.minHeight = '60vh'
           }
         }, 500); // Small delay to ensure DOM is ready
         
