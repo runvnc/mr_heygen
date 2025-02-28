@@ -300,28 +300,30 @@ chat-tts {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
   }
   
   main.container {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 20px;
   }
   
   article {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: auto;
+    max-height: 60vh;
   }
   
   video {
-    max-height: 80vh;
+    max-height: 60vh;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -332,13 +334,23 @@ chat-tts {
   }
   
   chat-ai {
-    min-height: 0 !important;
-    max-height: 20vh !important;
+    min-height: 200px !important;
+    max-height: 30vh !important;
+    height: 200px !important;
   }
   
   /* Add space between button and microphone on desktop */
   .load-section {
     margin-bottom: 20px;
+  }
+  
+  /* Ensure chat log has space to display on desktop */
+  .chat-log {
+    min-height: 150px !important;
+    max-height: 25vh !important;
+    height: 150px !important;
+    display: block !important;
+    overflow-y: auto;
   }
 }
 
@@ -442,4 +454,17 @@ body, html, .main, main.container, article, section, chat-ai, chat-form {
 chat-form, #inp_message, .chat-entry {
   max-width: 100%;
   box-sizing: border-box;
+}
+
+/* Specific styles for chat log when visible */
+.chat-log:not([style*="display: none"]) {
+  min-height: 150px !important;
+  height: 150px !important;
+  max-height: 25vh !important;
+  display: block !important;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
 }
