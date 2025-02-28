@@ -53,9 +53,9 @@ ex = """
 async def get_avatarsettings(request: Request, persona_name: str):
     user = request.state.user if hasattr(request.state, "user") else {"username": "guest"}
     pwd = os.getcwd()
-    heygen_path = os.path.join(pwd, 'personas', 'local', user.username, persona_name, 'heygen.json')
+    #heygen_path = os.path.join(pwd, 'personas', 'local', user.username, persona_name, 'heygen.json')
     # TODO
-    # heygen_path = os.path.join(pwd, 'personas', user.username, persona_name, 'heygen.json')
+    heygen_path = os.path.join(pwd, 'personas', 'local', persona_name, 'heygen.json')
 
     # if there is no file, return default settings
     if not os.path.exists(heygen_path):
@@ -99,7 +99,7 @@ async def post_avatarsettings(request: Request, persona_name: str):
     pwd = os.getcwd()
     #heygen_path = os.path.join(pwd, 'personas', 'local', user.username, persona_name, 'heygen.json')
     # TODO: drop user.username, not unique to user
-    #heygen_path = os.path.join(pwd, 'personas', 'local', persona_name, 'heygen.json')
+    heygen_path = os.path.join(pwd, 'personas', 'local', persona_name, 'heygen.json')
 
     os.makedirs(os.path.dirname(heygen_path), exist_ok=True)
     with open(heygen_path, 'w') as f:
