@@ -25,32 +25,60 @@
   <script src="/mr_heygen/static/bundle.js"></script>
   <script>
         
-    // Function to check if device is mobile
+       
+    // More reliable mobile detection using User Agent and touch capability
     function isMobile() {
-      console.log("Window width: " + window.innerWidth);
-      return window.innerWidth <= 768;
+      // Check for touch capability
+      const hasTouchScreen = (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0 ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+      );
+      
+      // Check for mobile user agent patterns
+      const userAgent = navigator.userAgent.toLowerCase();
+      const mobileUserAgent = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(userAgent);
+      
+      console.log("Device detection - Touch: " + hasTouchScreen + ", Mobile UA: " + mobileUserAgent);
+      
+      // Consider it mobile if either condition is true
+      return hasTouchScreen || mobileUserAgent;
     }
 
     // Function to update chat-log visibility based on screen size
     function updateChatLogVisibility() {
       const chatAi = document.getElementById('chatAi');
       if (chatAi) {
-        const mainContainer = document.getElementById('mainContainer');
-        // always hide chat log and use mobile layout    
-        if (true || isMobile()) {
-          console.log("Hiding chat log")
-          chatAi.setAttribute('hide-chat-log', '');
-          // Reset to column layout for mobile
-          if (mainContainer) {
-            mainContainer.style.flexDirection = 'column';
+        const isMobileDevice = isMobile();
+        
+        // Always hide chat log regardless of device
+        console.log("Hiding chat log");
+        chatAi.setAttribute('hide-chat-log', '');
+        
+        // Hide send button and disable input on mobile devices
+        setTimeout(() => {
+          const sendButton = document.querySelector('.send_msg');
+          const inputField = document.querySelector('#inp_message');
+          
+          if (sendButton) {
+            if (isMobileDevice) {
+              sendButton.style.display = 'none';
+            } else {
+              sendButton.style.display = 'block';
+            }
           }
-        } else {
-          console.log("Showing chat log")
-          chatAi.removeAttribute('hide-chat-log');
-          // Set row layout for desktop
-          if (mainContainer) {
-            mainContainer.style.flexDirection = 'row';
+          if (inputField) {
+            if (isMobileDevice) {
+              inputField.disabled = true;
+              inputField.placeholder = 'Use voice input on mobile';
+            }
           }
+        }, 500); // Small delay to ensure DOM is ready
+        
+        // Make sure chat-ai is visible
+        if (chatAi.style.display === 'none') {
+          chatAi.style.display = 'block';
         }
       }
     }

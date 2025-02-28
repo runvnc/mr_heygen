@@ -297,8 +297,7 @@ chat-tts {
 /* Desktop styles */
 @media (min-width: 769px) {
   .main {
-    min-height: 100vh;
-    flex-direction: row;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -306,13 +305,12 @@ chat-tts {
   
   main.container {
     flex: 0 0 auto;
-    width: 60%;
-    height: 100vh;
+    width: 100%;
     display: flex; 
     flex-direction: column; 
     justify-content: flex-start;
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   article {
@@ -321,7 +319,6 @@ chat-tts {
     align-items: center;
     justify-content: center;
     min-height: auto;
-    height: 70vh;
     max-height: 60vh;
   }
   
@@ -337,11 +334,11 @@ chat-tts {
   }
   
   chat-ai {
-    width: 40% !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
+    width: 100% !important;
+    min-height: 200px !important;
+    height: auto !important;
+    max-height: 30vh !important;
+    display: block !important;
   }
   
   /* Add space between button and microphone on desktop */
@@ -377,6 +374,8 @@ chat-tts {
 /* Ensure chat-ai component is properly sized */
 chat-ai {
   flex: 0 0 auto !important;
+  min-height: 100px !important;
+  display: block !important;
   overflow: auto;
   width: 100%;
   position: relative;
@@ -469,10 +468,21 @@ chat-form, #inp_message, .chat-entry {
   max-height: 25vh !important;
   display: block !important;
   overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 8px;
   margin: 10px 0;
   padding: 10px;
+}
+
+chat-form {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+  z-index: 100;
+  margin-top: 20px;
+  padding: 10px 0;
 }
