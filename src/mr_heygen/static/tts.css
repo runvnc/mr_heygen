@@ -24,6 +24,8 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Main container styles */
@@ -32,10 +34,12 @@ html, body {
   flex-direction: column;
   height: 100vh;
   width: 100%;
+  max-width: 100vw;
   background: #000000;
   position: relative;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 main.container {
@@ -51,6 +55,7 @@ main.container {
   flex: 1;
   background-color: #000000 !important;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Video container styles */
@@ -203,6 +208,7 @@ chat-tts {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden;
   }
   
   main.container {
@@ -211,6 +217,7 @@ chat-tts {
     flex-direction: column;
     justify-content: center;
     padding: 0;
+    overflow-x: hidden;
   }
   
   article {
@@ -244,6 +251,7 @@ chat-tts {
   .load-section {
     margin: 0;
     padding: 0;
+    margin-bottom: 60px; /* Add space below the button to prevent overlap with microphone */
   }
   
   /* Center the entire content vertically */
@@ -264,6 +272,25 @@ chat-tts {
   /* Make chat input area more compact */
   chat-ai {
     margin-bottom: 0;
+  }
+  
+  /* Fix horizontal scrollbar */
+  body, html, .main, main.container, article, section, chat-ai {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure the chat form doesn't cause horizontal scrolling */
+  chat-form {
+    max-width: 100vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Fix input width */
+  #inp_message {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -308,6 +335,11 @@ chat-tts {
     min-height: 0 !important;
     max-height: 20vh !important;
   }
+  
+  /* Add space between button and microphone on desktop */
+  .load-section {
+    margin-bottom: 20px;
+  }
 }
 
 /* Fix for microphone button positioning */
@@ -332,6 +364,8 @@ chat-ai {
   position: relative;
   z-index: 10;
   margin-top: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Additional mobile optimizations to reduce spacing */
@@ -351,6 +385,7 @@ chat-ai {
   section.load-section {
     margin: 0;
     padding: 0;
+    margin-bottom: 60px; /* Add space to prevent overlap */
   }
   
   /* Adjust button spacing */
@@ -372,16 +407,11 @@ chat-ai {
   main.container {
     gap: 0;
   }
-  
-  /* Reduce space between session button and microphone */
-  .load-section + chat-ai {
-    margin-top: 0;
-  }
 }
 
 /* Additional specific fixes for the gap between session button and microphone */
 .load-section {
-  margin-bottom: 0;
+  margin-bottom: 60px; /* Add space to prevent overlap */
   padding-bottom: 0;
 }
 
@@ -399,4 +429,17 @@ main.container, .main {
 /* Specific fix for the microphone positioning */
 chat-ai chat-tts {
   margin-top: 0;
+}
+
+/* Fix horizontal scrollbar */
+body, html, .main, main.container, article, section, chat-ai, chat-form {
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Fix for chat form and input */
+chat-form, #inp_message, .chat-entry {
+  max-width: 100%;
+  box-sizing: border-box;
 }
