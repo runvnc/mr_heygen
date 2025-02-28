@@ -24,19 +24,20 @@
 
   <script src="/mr_heygen/static/bundle.js"></script>
   <script>
+        
     // Function to check if device is mobile
     function isMobile() {
       console.log("Window width: " + window.innerWidth);
       return window.innerWidth <= 768;
     }
-    
+
     // Function to update chat-log visibility based on screen size
     function updateChatLogVisibility() {
       const chatAi = document.getElementById('chatAi');
       if (chatAi) {
         const mainContainer = document.getElementById('mainContainer');
-        
-        if (isMobile()) {
+        // always hide chat log and use mobile layout    
+        if (true || isMobile()) {
           console.log("Hiding chat log")
           chatAi.setAttribute('hide-chat-log', '');
           // Reset to column layout for mobile
