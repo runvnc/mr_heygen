@@ -34,8 +34,10 @@
       const chatAi = document.getElementById('chatAi');
       if (chatAi) {
         if (isMobile()) {
+          console.log("Hiding chat log")
           chatAi.setAttribute('hide-chat-log', '');
         } else {
+          console.log("Showing chat log")
           chatAi.removeAttribute('hide-chat-log');
         }
       }
