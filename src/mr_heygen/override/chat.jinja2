@@ -1,5 +1,5 @@
 {% block content %}
-  <div class="main">
+  <div class="main" id="mainContainer">
     <!-- <div id="debug-overlay2">DEBUG READY</div> -->
 
     <main class="container">
@@ -26,6 +26,7 @@
   <script>
     // Function to check if device is mobile
     function isMobile() {
+      console.log("Window width: " + window.innerWidth);
       return window.innerWidth <= 768;
     }
     
@@ -33,12 +34,22 @@
     function updateChatLogVisibility() {
       const chatAi = document.getElementById('chatAi');
       if (chatAi) {
+        const mainContainer = document.getElementById('mainContainer');
+        
         if (isMobile()) {
           console.log("Hiding chat log")
           chatAi.setAttribute('hide-chat-log', '');
+          // Reset to column layout for mobile
+          if (mainContainer) {
+            mainContainer.style.flexDirection = 'column';
+          }
         } else {
           console.log("Showing chat log")
           chatAi.removeAttribute('hide-chat-log');
+          // Set row layout for desktop
+          if (mainContainer) {
+            mainContainer.style.flexDirection = 'row';
+          }
         }
       }
     }
