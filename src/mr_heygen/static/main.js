@@ -43,6 +43,9 @@ async function initializeAvatarSession() {
   avatar = new StreamingAvatar({ token });
   const data = await window.authenticatedFetch(`/heygen/avatarsettings/${window.persona}`)
   const avatarSettings = await data.json();
+  console.log("retrieved avatar settings for persona", window.persona)
+  console.log({avatarSettings})
+ 
   window.avatar = avatar;
   sessionData = await avatar.createStartAvatar(avatarSettings);
 
