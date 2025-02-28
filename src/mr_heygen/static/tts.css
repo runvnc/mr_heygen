@@ -253,6 +253,7 @@ chat-tts {
     margin: 0;
     padding: 0;
     margin-bottom: 60px; /* Add space below the button to prevent overlap with microphone */
+    overflow: hidden;
   }
   
   /* Center the entire content vertically */
