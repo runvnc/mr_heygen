@@ -18,8 +18,33 @@
         <button id="startSession" class="session-toggle">Load Avatar</button>
       </section>
     </main>
-    <chat-ai sessionid="{{ log_id }}" agent_name="{{ agent_name }}" hide-chat-log style="margin-top: 0;"></chat-ai>
+    
+    <chat-ai id="chatAi" sessionid="{{ log_id }}" agent_name="{{ agent_name }}" style="margin-top: 0;"></chat-ai>
   </div>
 
   <script src="/mr_heygen/static/bundle.js"></script>
+  <script>
+    // Function to check if device is mobile
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+    
+    // Function to update chat-log visibility based on screen size
+    function updateChatLogVisibility() {
+      const chatAi = document.getElementById('chatAi');
+      if (chatAi) {
+        if (isMobile()) {
+          chatAi.setAttribute('hide-chat-log', '');
+        } else {
+          chatAi.removeAttribute('hide-chat-log');
+        }
+      }
+    }
+    
+    // Initial check
+    document.addEventListener('DOMContentLoaded', updateChatLogVisibility);
+    
+    // Update on window resize
+    window.addEventListener('resize', updateChatLogVisibility);
+  </script>
 {% endblock %}
