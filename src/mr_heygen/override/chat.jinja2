@@ -58,8 +58,9 @@
         
         // Hide send button and disable input on mobile devices
         setTimeout(() => {
-          const sendButton = document.querySelector('.send_msg');
-          const inputField = document.querySelector('#inp_message');
+          const chatai = document.querySelector('chat-ai').shadowRoot
+          const sendButton = chatai.querySelector('.send_msg');
+          const inputField = chatai.querySelector('#inp_message');
           
           if (sendButton) {
             if (isMobileDevice) {
