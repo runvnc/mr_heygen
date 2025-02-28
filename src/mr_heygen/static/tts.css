@@ -128,7 +128,8 @@ section {
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0;
+  padding: 0;
+  margin: 0;
   position: relative;
   z-index: 10;
 }
@@ -143,7 +144,7 @@ section {
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 5px 5px;
+  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -172,8 +173,8 @@ section {
 chat-tts {
   position: relative;
   z-index: 20;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Debug overlay */
@@ -246,8 +247,8 @@ chat-tts {
   
   /* Compact layout for mobile */
   .load-section {
-    margin-top: 0;
-    padding-top: 0;
+    margin: 0;
+    padding: 0;
   }
   
   /* Center the entire content vertically */
@@ -261,8 +262,8 @@ chat-tts {
   
   /* Reduce spacing between elements */
   .object {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
   
   /* Make chat input area more compact */
@@ -305,7 +306,7 @@ chat-tts {
   }
   
   section {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
   }
   
   chat-ai {
@@ -321,8 +322,8 @@ chat-tts {
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 0;
+  padding: 0;
   position: relative;
   z-index: 30;
 }
@@ -335,6 +336,7 @@ chat-ai {
   width: 100%;
   position: relative;
   z-index: 10;
+  margin-top: 0;
 }
 
 /* Additional mobile optimizations to reduce spacing */
@@ -358,17 +360,48 @@ chat-ai {
   
   /* Adjust button spacing */
   .session-toggle {
-    margin: 5px 0;
+    margin: 0;
   }
   
   /* Make microphone button closer to other elements */
   chat-tts {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 0;
   }
   
   /* Ensure the chat input is close to the microphone */
   chat-ai {
     margin-top: 0;
   }
+  
+  /* Create a more compact layout by adjusting the container */
+  main.container {
+    gap: 0;
+  }
+  
+  /* Reduce space between session button and microphone */
+  .load-section + chat-ai {
+    margin-top: 0;
+  }
+}
+
+/* Additional specific fixes for the gap between session button and microphone */
+.load-section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Force elements to be closer together */
+main.container, .main {
+  gap: 0;
+}
+
+/* Ensure no extra margins on any elements */
+.main > *, main.container > *, section > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Specific fix for the microphone positioning */
+chat-ai chat-tts {
+  margin-top: 0;
 }
