@@ -22,16 +22,23 @@ html, body {
   color: white;
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
-chat-log {}
-  display:none;
+/* Hide chat-log when Heygen plugin is active */
+chat-log {
+  display: none !important;
 }
 
-.page-container {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+/* Main container styles */
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: #000000;
+  position: relative;
 }
 
 main.container {
@@ -40,74 +47,40 @@ main.container {
   margin: 0;
   padding: 0;
   background: #000000;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
   background-color: #000000 !important;
+  position: relative;
+}
+
+/* Video container styles */
+article {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
 }
 
 video {
   width: 100%;
+  max-width: 100%;
   padding: 0;
   margin: 0;
   border: none;
-}
-
-article {
-  flex: 6;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-  width: 100%;
-  /*display: flex; */
-  /* min-height: 45vh; */
-  position: relative;
-  justify-content: center;
-  /* flex-direction: column;
-  align-items: center; */
-  background: #000000;
+  display: block;
 }
 
 #avatarVideo {
   width: 100%;
   margin: 0;
   display: none;
-}
-
-/* Center controls */
-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Session toggle button styling */
-.session-toggle {
-  background: transparent;
-  /* border: 2px solid #50cddd; */
-  border: 2px dotted #50cddd;
-  border-radius: 25px;
-  color: #50cddd;
-  padding: 4px 10px;
-  font-size: 0.6rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 5px 5px;
-  position: relative;
-  overflow: hidden;
-}
-
-.session-toggle:hover {
-  background: rgba(80, 205, 221, 0.1);
-  box-shadow: 0 0 15px rgba(80, 205, 221, 0.3);
-}
-
-.session-toggle.active {
-  border-color: #dd5050;
-  color: #dd5050;
 }
 
 /* Loading animation */
@@ -145,110 +118,63 @@ section {
   100% { transform: rotate(360deg); }
 }
 
-.object {
+/* Controls section */
+section {
+  width: 100%;
   display: flex;
-  flex: 0 1 100%;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  align-content: stretch;
-  margin-top: 20px;
+  gap: 0.5rem;
+  padding: 1rem 0;
   position: relative;
+  z-index: 10;
 }
 
-section[role="group"] {
-  width: 80%;
-  max-width: 800px;
-}
-
-#speakButton {
-  border: 2px solid #50cddd;
-  border-radius: 30px;
+/* Session toggle button styling */
+.session-toggle {
   background: transparent;
+  border: 2px dotted #50cddd;
+  border-radius: 25px;
   color: #50cddd;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  cursor: pointer;
   transition: all 0.3s ease;
+  margin: 5px 5px;
+  position: relative;
+  overflow: hidden;
 }
 
-#speakButton:hover {
+.session-toggle:hover {
   background: rgba(80, 205, 221, 0.1);
   box-shadow: 0 0 15px rgba(80, 205, 221, 0.3);
 }
 
-.outline {
-  display: none;
+.session-toggle.active {
+  border-color: #dd5050;
+  color: #dd5050;
 }
 
-.recording .outline {
-  display: block;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 8px solid #b5a4a4;
-  animation: pulse 3s;
-  animation-timing-function: ease-out;
-  animation-iteration-count: infinite;
-  position: absolute;
+/* Chat input area */
+#inp_message {
+  border-radius: 0;
+  border: none;
 }
 
-.button {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #50cddd;
-  box-shadow: 0px 0px 80px #0084f9;
-  position: absolute;
+.send_msg {
+  border-radius: 0 !important;
 }
 
-.recording .button {
-  background: #dd5050;
-  box-shadow: 0px 0px 80px #f90000;
+/* Microphone button styling fixes */
+chat-tts {
+  position: relative;
+  z-index: 20;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-    border: 65px solid #000000;
-  }
-  50% {
-    border: solid #ffffff;
-    opacity: 0.8;
-  }
-  90% {
-    transform: scale(3.2);
-    opacity: 0.2;
-    border: 3px solid #000000;
-  }
-  100% {
-    transform: scale(3.3);
-    opacity: 0;
-    border: 1px solid #ffffff;
-  }
-}
-
-#delayed {
-  animation-delay: 1.5s;
-}
-
-#circlein {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #6bd6e1;
-  box-shadow: 0px -2px 15px #e0ff94;
-  position: absolute;
-}
-
-.recording #circlein {
-  background: #e16b6b;
-  box-shadow: 0px -2px 15px #e0ff94;
-}
-
-.mic-icon {
-  height: 60px;
-  position: absolute;
-  margin: 21px;
-}
-
+/* Debug overlay */
 #debug-overlay2 {
   position: fixed;
   top: 60vh;
@@ -272,12 +198,106 @@ section[role="group"] {
   white-space: pre-wrap;
 }
 
-#inp_message {
-  border-radius: 0;
-  border: none;
+/* Mobile styles */
+@media (max-width: 768px) {
+  .main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  article {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    max-height: 60vh;
+  }
+  
+  video {
+    max-height: 60vh;
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  section {
+    padding: 0.5rem 0;
+  }
+  
+  chat-ai {
+    min-height: 0 !important;
+    max-height: 30vh !important;
+  }
 }
 
-.send_msg {
-  border-radius: 0 !important;
+/* Desktop styles */
+@media (min-width: 769px) {
+  .main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  article {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+  }
+  
+  video {
+    max-height: 80vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+  section {
+    padding: 1rem 0;
+  }
+  
+  chat-ai {
+    min-height: 0 !important;
+    max-height: 20vh !important;
+  }
 }
 
+/* Fix for microphone button positioning */
+.object {
+  display: flex;
+  flex: 0 1 100%;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  margin-top: 20px;
+  position: relative;
+  z-index: 30;
+}
+
+/* Ensure chat-ai component is properly sized */
+chat-ai {
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+  overflow: auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}

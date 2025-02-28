@@ -1,12 +1,10 @@
 {% block content %}
-  <div class="main" >
+  <div class="main">
     <!-- <div id="debug-overlay2">DEBUG READY</div> -->
 
-    <main
-      class="container"
-    >
+    <main class="container">
       <!-- Video Section -->
-      <article style="width: 100%; flex: 6">
+      <article>
         <div id="loading" class="loading"><div class="loading-spinner"></div></div>
         <video id="animation" src="/imgs/heygenloading.mp4"
                style="display: none;" 
@@ -16,12 +14,12 @@
       </article>
 
       <!-- Controls Section -->
-      <section "class="load-section" style="flex: 1; margin: 0;">
+      <section class="load-section">
         <button id="startSession" class="session-toggle">Load Avatar</button>
       </section>
     </main>
     
-    <chat-ai sessionid="{{ log_id }}" style="flex: 1 1 auto; min-height: 0; overflow: auto;" agent_name="{{ agent_name }}"></chat-ai>
+    <chat-ai sessionid="{{ log_id }}" agent_name="{{ agent_name }}"></chat-ai>
   </div>
 
   <script src="/mr_heygen/static/bundle.js"></script>
