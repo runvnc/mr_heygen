@@ -1,11 +1,13 @@
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from lib.templates import render
+from lib.utils.debug import debug_box
 import os
 import requests
 import json
 from loguru import logger
 from dotenv import load_dotenv
+
 load_dotenv(override=True)
 
 HEYGEN_API_KEY = os.getenv("HEYGEN_API_KEY")
@@ -56,6 +58,7 @@ async def get_avatarsettings(request: Request, persona_name: str):
     #heygen_path = os.path.join(pwd, 'personas', 'local', user.username, persona_name, 'heygen.json')
     # TODO
     heygen_path = os.path.join(pwd, 'personas', 'local', persona_name, 'heygen.json')
+    debug_box(f"Trying to load heygen settings from {heygen_path}")
 
     # if there is no file, return default settings
     if not os.path.exists(heygen_path):
