@@ -43,6 +43,8 @@
       console.log("Device detection - Touch: " + hasTouchScreen + ", Mobile UA: " + mobileUserAgent);
       
       // Consider it mobile if either condition is true
+      console.log("Mobile device: " + (hasTouchScreen || mobileUserAgent));
+           
       return hasTouchScreen || mobileUserAgent;
     }
 
@@ -58,12 +60,18 @@
         
         // Hide send button and disable input on mobile devices
         setTimeout(() => {
+          console.log("-------------------------------------------")
+          console.log("Mobile Device: " + isMobileDevice)
+          console.log("Shoujld be hiding send button for mobile")
           const chatai = document.querySelector('chat-ai').shadowRoot
+          console.log({chatai})
+
           const sendButton = chatai.querySelector('.send_msg');
           const inputField = chatai.querySelector('#inp_message');
           
           if (sendButton) {
             if (isMobileDevice) {
+              console.log("hiding send button")
               sendButton.style.display = 'none';
             } else {
               sendButton.style.display = 'block';
@@ -71,6 +79,7 @@
           }
           if (inputField) {
             if (isMobileDevice) {
+              console.log("hiding input field")
               inputField.disabled = true;
               inputField.placeholder = 'Use voice input on mobile';
             }
