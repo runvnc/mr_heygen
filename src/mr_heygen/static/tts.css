@@ -245,14 +245,13 @@ chat-tts {
     min-height: 0 !important;
     max-height: 30vh !important;
     margin-top: 0;
-    padding-top: 0;
+    padding-top: 60px;
   }
   
   /* Compact layout for mobile */
   .load-section {
     margin: 0;
     padding: 0;
-    margin-bottom: 60px; /* Add space below the button to prevent overlap with microphone */
     overflow: hidden;
   }
   
