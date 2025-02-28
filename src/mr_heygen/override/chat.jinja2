@@ -82,15 +82,23 @@
             }
           }
           if (inputField) {
+            inputField.style.height = '25px'
+ 
             if (isMobileDevice) {
               console.log("hiding input field")
               inputField.disabled = true;
-              //inputField.placeholder = 'Use voice input on mobile';
-            }
+             //inputField.placeholder = 'Use voice input on mobile';
+                        }
           }
           if (!isMobileDevice) {
-            document.querySelector('article').style.minHeight = '60vh'
+            document.querySelector('article').style.width = "100%"
+            document.querySelector('article').style.width = "65vh"
+ 
             document.querySelector('.load-section').style.overflow = 'hidden'
+            document.querySelector('#startSession').style.fontSize = '0.5rem'
+            document.querySelector('#startSession').style.height = "15px"
+            sendButton.style.height = '25px';
+
           }
         }, 500); // Small delay to ensure DOM is ready
         
