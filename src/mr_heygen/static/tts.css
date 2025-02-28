@@ -24,6 +24,10 @@ html, body {
   padding: 0;
 }
 
+chat-log {}
+  display:none;
+}
+
 .page-container {
   max-width: 800px;
   margin-left: auto;
@@ -54,8 +58,9 @@ article {
   margin: 0;
   width: 100%;
   max-width: 100%;
+  width: 100%;
   display: flex;
-  min-height: 45vh;
+  /* min-height: 45vh; */
   position: relative;
   justify-content: center;
   flex-direction: column;
