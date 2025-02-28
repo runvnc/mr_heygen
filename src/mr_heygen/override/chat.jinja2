@@ -65,10 +65,14 @@
           console.log("Shoujld be hiding send button for mobile")
           const chatai = document.querySelector('chat-ai').shadowRoot
           console.log({chatai})
+          const chatform = chatai.querySelector('chat-form').shadowRoot
+          console.log({chatform)})
 
-          const sendButton = chatai.querySelector('.send_msg');
-          const inputField = chatai.querySelector('#inp_message');
-          
+          const sendButton = chatform.querySelector('.send_msg');
+          const inputField = chatform.querySelector('#inp_message');
+          console.log({sendButton})
+          console.log({inputField})
+
           if (sendButton) {
             if (isMobileDevice) {
               console.log("hiding send button")
