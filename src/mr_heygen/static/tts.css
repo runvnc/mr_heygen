@@ -26,11 +26,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Hide chat-log when Heygen plugin is active */
-chat-log {
-  display: none !important;
-}
-
 /* Main container styles */
 .main {
   display: flex;
