@@ -19,7 +19,7 @@
       </section>
     </main>
     
-    <chat-ai id="chatAi" sessionid="{{ log_id }}" agent_name="{{ agent_name }}" style="margin-top: 0;"></chat-ai>
+    <chat-ai id="chatAi" hide-chat-log sessionid="{{ log_id }}" agent_name="{{ agent_name }}" style="margin-top: 0;"></chat-ai>
   </div>
 
   <script src="/mr_heygen/static/bundle.js"></script>
@@ -55,8 +55,6 @@
         const isMobileDevice = isMobile();
         
         // Always hide chat log regardless of device
-        console.log("Hiding chat log");
-        chatAi.setAttribute('hide-chat-log', '');
         
         // Hide send button and disable input on mobile devices
         setTimeout(() => {
