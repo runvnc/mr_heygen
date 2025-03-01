@@ -61,6 +61,7 @@
           console.log("-------------------------------------------")
           console.log("Mobile Device: " + isMobileDevice)
           console.log("Shoujld be hiding send button for mobile")
+          document.querySelector('chat-ai').style.overflow = 'hidden'
           const chatai = document.querySelector('chat-ai').shadowRoot
           console.log({chatai})
           const chatform = chatai.querySelector('chat-form').shadowRoot
@@ -94,7 +95,7 @@
             document.querySelector('article').style.minHeight = "55vh"
             document.querySelector('.container').style.minHeight = "65vh"
             document.querySelector('.container').style.height = "55vh"
-  
+             
             document.querySelector('.load-section').style.overflow = 'hidden'
             document.querySelector('#startSession').style.fontSize = '0.9rem'
             document.querySelector('#startSession').style.height = "35px"
