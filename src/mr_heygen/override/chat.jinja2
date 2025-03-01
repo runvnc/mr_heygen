@@ -1,8 +1,8 @@
 {% block content %}
-  <div class="main" id="mainContainer" style="border: 1px solid green;">
+  <div class="main" id="mainContainer" >
     <!-- <div id="debug-overlay2">DEBUG READY</div> -->
 
-    <main class="container" style="border: 1px solid blue;">
+    <main class="container">
       <!-- Video Section -->
       <article>
         <div id="loading" class="loading"><div class="loading-spinner"></div></div>
@@ -72,7 +72,7 @@
           console.log({inputField})
 
           if (sendButton) {
-            if (true || isMobileDevice) {
+            if (isMobileDevice) {
               console.log("hiding send button")
               sendButton.style.display = 'none';
             } else {
@@ -86,9 +86,9 @@
               console.log("hiding input field")
               inputField.disabled = true;
               inputField.style.border = 'none'
-              document.querySelector('article').style.minHeight = "65vh"
-              document.querySelector('.container').style.minHeight = "65vh"
-              document.querySelector('.container').style.height = "65vh"
+              document.querySelector('article').style.minHeight = "60vh"
+              document.querySelector('.container').style.minHeight = "60vh"
+              document.querySelector('.container').style.height = "60vh"
               document.querySelector('.load-section').style.overflow = 'hidden'
              }
           }
