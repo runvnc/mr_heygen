@@ -44,8 +44,7 @@
       
       // Consider it mobile if either condition is true
       console.log("Mobile device: " + (hasTouchScreen || mobileUserAgent));
-      return true;     
-      //return hasTouchScreen || mobileUserAgent;
+      return hasTouchScreen || mobileUserAgent;
     }
 
     // Function to update chat-log visibility based on screen size
@@ -73,7 +72,7 @@
           console.log({inputField})
 
           if (sendButton) {
-            if (isMobileDevice) {
+            if (true || isMobileDevice) {
               console.log("hiding send button")
               sendButton.style.display = 'none';
             } else {
@@ -87,14 +86,13 @@
               console.log("hiding input field")
               inputField.disabled = true;
               inputField.style.border = 'none'
-             //inputField.placeholder = 'Use voice input on mobile';
+              document.querySelector('article').style.minHeight = "55vh"
+              document.querySelector('.container').style.minHeight = "65vh"
+              document.querySelector('.container').style.height = "55vh"
+              document.querySelector('.load-section').style.overflow = 'hidden'
              }
           }
-          document.querySelector('article').style.minHeight = "55vh"
-          document.querySelector('.container').style.minHeight = "65vh"
-          document.querySelector('.container').style.height = "55vh"
-          document.querySelector('.load-section').style.overflow = 'hidden'
- 
+
           if (!isMobileDevice) {
             console.log("------------------------------- not mobile device ----------------------------------")
             document.querySelector('article').style.minHeight = "55vh"
