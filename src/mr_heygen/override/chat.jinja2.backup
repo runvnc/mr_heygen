@@ -1,0 +1,124 @@
+{% block content %}
+  <div class="main" id="mainContainer" >
+    <!-- <div id="debug-overlay2">DEBUG READY</div> -->
+
+    <main class="container">
+      <!-- Video Section -->
+      <article>
+        <div id="loading" class="loading"><div class="loading-spinner"></div></div>
+        <video id="animation" src="/imgs/heygenloading.mp4"
+               style="display: none;" 
+               onerror="this.style.display='none'" 
+               muted autoplay playsinline loop></video>
+        <video id="avatarVideo" autoplay playsinline></video>
+      </article>
+
+      <!-- Controls Section -->
+      <section class="load-section">
+        <button id="startSession" class="session-toggle">Load Avatar</button>
+      </section>
+    </main>
+    
+    <chat-ai id="chatAi" auto-size-input="false" hide-chat-log="true" sessionid="{{ log_id }}" agent_name="{{ agent_name }}" style="margin-top: 0;"></chat-ai>
+  </div>
+
+  <script src="/mr_heygen/static/bundle.js"></script>
+  <script>
+        
+       
+    // More reliable mobile detection using User Agent and touch capability
+    function isMobile() {
+      // Check for touch capability
+      const hasTouchScreen = (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0 ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+      );
+      
+      // Check for mobile user agent patterns
+      const userAgent = navigator.userAgent.toLowerCase();
+      const mobileUserAgent = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet/i.test(userAgent);
+      
+      console.log("Device detection - Touch: " + hasTouchScreen + ", Mobile UA: " + mobileUserAgent);
+      
+      // Consider it mobile if either condition is true
+      console.log("Mobile device: " + (hasTouchScreen || mobileUserAgent));
+      return hasTouchScreen || mobileUserAgent;
+    }
+
+    // Function to update chat-log visibility based on screen size
+    function updateChatLogVisibility() {
+      const chatAi = document.getElementById('chatAi');
+      if (chatAi) {
+        const isMobileDevice = isMobile();
+        
+        // Always hide chat log regardless of device
+        
+        // Hide send button and disable input on mobile devices
+        setTimeout(() => {
+          console.log("-------------------------------------------")
+          console.log("Mobile Device: " + isMobileDevice)
+          console.log("Shoujld be hiding send button for mobile")
+          document.querySelector('chat-ai').style.overflow = 'hidden'
+          const chatai = document.querySelector('chat-ai').shadowRoot
+          console.log({chatai})
+          const chatform = chatai.querySelector('chat-form').shadowRoot
+          console.log({chatform})
+
+          const sendButton = chatform.querySelector('.send_msg');
+          const inputField = chatform.querySelector('#inp_message');
+          console.log({sendButton})
+          console.log({inputField})
+
+          if (sendButton) {
+            if (isMobileDevice) {
+              console.log("hiding send button")
+              sendButton.style.display = 'none';
+            } else {
+              sendButton.style.display = 'block';
+            }
+          }
+          if (inputField) {
+            inputField.style.height = '25px !important'
+ 
+            if (isMobileDevice) {
+              console.log("hiding input field")
+              inputField.disabled = true;
+              inputField.style.border = 'none'
+              document.querySelector('.main').style.minHeight = "55vh"
+              document.querySelector('article').style.minHeight = "36vh"
+              document.querySelector('.container').style.minHeight = "55vh"
+              document.querySelector('.container').style.height = "55vh"
+              document.querySelector('.load-section').style.overflow = 'hidden'
+             }
+          }
+
+          if (!isMobileDevice) {
+            console.log("------------------------------- not mobile device ----------------------------------")
+ 
+            document.querySelector('article').style.minHeight = "52vh"
+            document.querySelector('.container').style.minHeight = "70vh"
+            document.querySelector('.container').style.height = "70vh"
+             
+            document.querySelector('.load-section').style.overflow = 'hidden'
+            document.querySelector('#startSession').style.fontSize = '0.9rem'
+            document.querySelector('#startSession').style.height = "35px"
+            //sendButton.style.height = '25px';
+          }
+        }, 500); // Small delay to ensure DOM is ready
+        
+        // Make sure chat-ai is visible
+        if (chatAi.style.display === 'none') {
+          chatAi.style.display = 'block';
+        }
+      }
+    }
+    
+    // Initial check
+    document.addEventListener('DOMContentLoaded', updateChatLogVisibility);
+    
+    // Update on window resize
+    window.addEventListener('resize', updateChatLogVisibility);
+  </script>
+{% endblock %}
