@@ -204,7 +204,7 @@ chat-tts {
 /* Mobile styles */
 @media (max-width: 768px) {
   .main {
-    height: 100vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
