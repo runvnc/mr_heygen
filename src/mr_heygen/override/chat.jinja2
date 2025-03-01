@@ -1,8 +1,8 @@
 {% block content %}
-  <div class="main" id="mainContainer">
+  <div class="main" id="mainContainer" style="border: 1px solid green;">
     <!-- <div id="debug-overlay2">DEBUG READY</div> -->
 
-    <main class="container">
+    <main class="container" style="border: 1px solid blue;">
       <!-- Video Section -->
       <article>
         <div id="loading" class="loading"><div class="loading-spinner"></div></div>
@@ -86,18 +86,18 @@
               console.log("hiding input field")
               inputField.disabled = true;
               inputField.style.border = 'none'
-              document.querySelector('article').style.minHeight = "55vh"
-              document.querySelector('.container').style.minHeight = "65vh"
-              document.querySelector('.container').style.height = "55vh"
+              document.querySelector('article').style.minHeight = "45vh"
+              document.querySelector('.container').style.minHeight = "45vh"
+              document.querySelector('.container').style.height = "45vh"
               document.querySelector('.load-section').style.overflow = 'hidden'
              }
           }
 
           if (!isMobileDevice) {
             console.log("------------------------------- not mobile device ----------------------------------")
-            document.querySelector('article').style.minHeight = "45vh"
-            document.querySelector('.container').style.minHeight = "45vh"
-            document.querySelector('.container').style.height = "45vh"
+            document.querySelector('article').style.minHeight = "55vh"
+            document.querySelector('.container').style.minHeight = "65vh"
+            document.querySelector('.container').style.height = "55vh"
              
             document.querySelector('.load-section').style.overflow = 'hidden'
             document.querySelector('#startSession').style.fontSize = '0.9rem'
