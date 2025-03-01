@@ -82,7 +82,7 @@
             }
           }
           if (inputField) {
-            inputField.style.height = '25px'
+            inputField.style.height = '25px !important'
  
             if (isMobileDevice) {
               console.log("hiding input field")
@@ -91,11 +91,11 @@
              }
           }
           if (!isMobileDevice) {
-            document.querySelector('article').style.width = "100%"
-            document.querySelector('article').style.height = "65vh"
+            document.querySelector('article').style.width = "100vw !important"
+            document.querySelector('article').style.height = "auto"
  
             document.querySelector('.load-section').style.overflow = 'hidden'
-            document.querySelector('#startSession').style.fontSize = '0.5rem'
+            document.querySelector('#startSession').style.fontSize = '0.75rem'
             document.querySelector('#startSession').style.height = "15px"
             sendButton.style.height = '25px';
 
