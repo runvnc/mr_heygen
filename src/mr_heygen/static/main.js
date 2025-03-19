@@ -1,7 +1,7 @@
 import StreamingAvatar, {
   AvatarQuality, VoiceEmotion, StreamingEvents, TaskType
 } from '@heygen/streaming-avatar';
-import './tts.js';
+//import './tts.js';
 import {debugLog} from './debugoverlay.js';
 
 

@@ -125,7 +125,7 @@ async function start(socket) {
   const listenButton = document.getElementById("record");
   if (!listenButton) {
     console.warn("no listen button found")
-    return;
+    //return;
   }
   if (listenButton) {
     try {
