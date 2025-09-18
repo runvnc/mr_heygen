@@ -63,11 +63,13 @@ async function initializeAvatarSession() {
 
   avatar.on(StreamingEvents.STREAM_READY, handleStreamReady);
   avatar.on(StreamingEvents.STREAM_DISCONNECTED, handleStreamDisconnected);
+  videoElement.style.display = 'block'
 }
 
 
 function hideLoadingAndStartPlaying() {
   try {
+    console.log("Trying to start playing")
     videoElement.style.display = 'block';
     videoElement.play().catch(console.error);
     animation.style.display = 'none';
@@ -79,6 +81,8 @@ function hideLoadingAndStartPlaying() {
 
 // Handle when avatar stream is ready
 function handleStreamReady(event) {
+  console.log("Stream ready")
+  console.log(event)
   if (event.detail && videoElement) {
     videoElement.srcObject = event.detail;
     videoElement.onloadedmetadata = hideLoadingAndStartPlaying;
