@@ -120,11 +120,13 @@ function handleStreamDisconnected() {
 // End the avatar session
 async function terminateAvatarSession() {
   try {
-    if (!avatar || !sessionData) return;
+    if (!avatar || !sessionData) {
+      console.warn("No active avatar session to terminate so not stopping avatar");
+      return
+    }
 
     await avatar.stopAvatar();
     console.log({avatar})
-    await avatar.close();
   } catch (e) {
     console.error("Error stopping avatar", e);
   }
