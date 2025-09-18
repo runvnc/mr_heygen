@@ -92,10 +92,10 @@ function handleStreamReady(event) {
       hideLoadingAndStartPlaying();
     } else {
       console.log("Video not ready yet, not waiting for loadedmetadata event")
-      hideLoadingAndStartPlaying()
+      //hideLoadingAndStartPlaying()
     }
-    setTimeout(hideLoadingAndStartPlaying, 5000);
-    setTimeout(hideLoadingAndStartPlaying, 10000);
+    //setTimeout(hideLoadingAndStartPlaying, 5000);
+    //setTimeout(hideLoadingAndStartPlaying, 10000);
   } else {
     console.error("Stream is not available!!!!!");
   }
