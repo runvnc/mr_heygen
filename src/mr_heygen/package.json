@@ -6,7 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@heygen/streaming-avatar": "^1.0.0"
+    "@heygen/streaming-avatar": "^2.1.0"
   },
   "devDependencies": {
     "vite": "^5.0.0"
