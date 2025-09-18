@@ -19,7 +19,7 @@ const animation = document.getElementById("animation");
 let avatar = null;
 let sessionData = null;
 let isSessionActive = false;
-let talkMode = TaskType.TALK;
+let talkMode = TaskType.REPEAT;
 
 async function fetchAccessToken() {
   const response = await window.authenticatedFetch("/heygen/tempkey")
