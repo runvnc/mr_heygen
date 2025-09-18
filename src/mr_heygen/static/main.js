@@ -51,6 +51,7 @@ async function initializeAvatarSession() {
   console.log('Avatar instance created')
   console.log({avatarSettings})
   delete avatarSettings['voice'];
+  avatarSettings.version = 'v3';
   console.log('hello')
   console.log({avatarSettings})
   sessionData = await avatar.createStartAvatar(avatarSettings);
