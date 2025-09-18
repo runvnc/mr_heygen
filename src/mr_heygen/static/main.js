@@ -107,7 +107,7 @@ function handleStreamDisconnected() {
   if (videoElement) {
     videoElement.srcObject = null;
     videoElement.style.display = 'none';
-    animation.style.display = 'block';
+    //animation.style.display = 'block';
   }
 
   // Update button state
