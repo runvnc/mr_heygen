@@ -53,6 +53,9 @@ async function initializeAvatarSession() {
   delete avatarSettings['voice'];
   console.log('hello')
   console.log({avatarSettings})
+  avatar.on(StreamingEvents.STREAM_READY, handleStreamReady);
+  avatar.on(StreamingEvents.STREAM_DISCONNECTED, handleStreamDisconnected);
+
   sessionData = await avatar.createStartAvatar(avatarSettings);
 
   console.log("Session data:", sessionData);
@@ -62,8 +65,6 @@ async function initializeAvatarSession() {
   startButton.textContent = "End Session";
   startButton.classList.add("active");
 
-  avatar.on(StreamingEvents.STREAM_READY, handleStreamReady);
-  avatar.on(StreamingEvents.STREAM_DISCONNECTED, handleStreamDisconnected);
   videoElement.style.display = 'block'
 }
 
