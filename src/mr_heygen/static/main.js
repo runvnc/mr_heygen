@@ -71,6 +71,7 @@ function hideLoadingAndStartPlaying() {
   try {
     console.log("Trying to start playing")
     videoElement.style.display = 'block';
+    videoElement.srcObject = window.avatarSource;
     videoElement.play().catch(console.error);
     animation.style.display = 'none';
     setLoading(false);
@@ -85,13 +86,17 @@ function handleStreamReady(event) {
   console.log(event)
   if (event.detail && videoElement) {
     videoElement.srcObject = event.detail;
+    window.avatarSource = event.detail
     videoElement.onloadedmetadata = hideLoadingAndStartPlaying;
     if (videoElement.readyState >= 2) {
       hideLoadingAndStartPlaying();
+    } else {
+      console.log("Video not ready yet, not waiting for loadedmetadata event")
+      hideLoadingAndStartPlaying()
     }
     setTimeout(hideLoadingAndStartPlaying, 5000);
   } else {
-    console.error("Stream is not available");
+    console.error("Stream is not available!!!!!");
   }
 }
 
@@ -114,12 +119,17 @@ function handleStreamDisconnected() {
 // End the avatar session
 async function terminateAvatarSession() {
   try {
+    if (!avatar || !sessionData) return;
+
     await avatar.stopAvatar();
+    console.log({avatar})
+    await avatar.close();
   } catch (e) {
     console.error("Error stopping avatar", e);
   }
-  //if (!avatar || !sessionData) return;
-
+  avatar.off(StreamingEvents.STREAM_READY, handleStreamReady);
+  avatar.off(StreamingEvents.STREAM_DISCONNECTED, handleStreamDisconnected);
+ 
   videoElement.srcObject = null;
   avatar = null;
 }
