@@ -29,6 +29,7 @@ async function fetchAccessToken() {
 
 // Show/hide loading spinner
 function setLoading(show) {
+  return
   try {
     const animation = document.getElementById("animation");
     animation.style.display = show ? 'block' : 'none';
@@ -71,7 +72,6 @@ function hideLoadingAndStartPlaying() {
   try {
     console.log("Trying to start playing")
     videoElement.style.display = 'block';
-    videoElement.srcObject = window.avatarSource;
     videoElement.play().catch(console.error);
     animation.style.display = 'none';
     setLoading(false);
@@ -95,6 +95,7 @@ function handleStreamReady(event) {
       hideLoadingAndStartPlaying()
     }
     setTimeout(hideLoadingAndStartPlaying, 5000);
+    setTimeout(hideLoadingAndStartPlaying, 10000);
   } else {
     console.error("Stream is not available!!!!!");
   }
