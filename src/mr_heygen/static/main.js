@@ -113,9 +113,13 @@ function handleStreamDisconnected() {
 
 // End the avatar session
 async function terminateAvatarSession() {
-  if (!avatar || !sessionData) return;
+  try {
+    await avatar.stopAvatar();
+  } catch (e) {
+    console.error("Error stopping avatar", e);
+  }
+  //if (!avatar || !sessionData) return;
 
-  await avatar.stopAvatar();
   videoElement.srcObject = null;
   avatar = null;
 }
@@ -177,13 +181,13 @@ function setListen(listen) {
   if (listen) {
     avatar.interrupt();
     console.log("start listening");
-    avatar.startListening();
+    //avatar.startListening();
     document.getElementById("startListeningButton").disabled = true;
     document.getElementById("stopListeningButton").disabled = false;
   } else {
     avatar.interrupt();
     console.log("stop listening");
-    avatar.stopListening();
+    //avatar.stopListening();
     document.getElementById("startListeningButton").disabled = false;
     document.getElementById("stopListeningButton").disabled = true;
   }
@@ -195,6 +199,7 @@ async function toggleSession() {
     setLoading(true);
     await initializeAvatarSession();
   } else {
+    console.log("Terminating session...")
     await terminateAvatarSession();
   }
 }
