@@ -205,7 +205,7 @@ startButton.addEventListener("click", () => {
     }
     console.log("registering commands: say")
     addedSay = true
-    window.registerCommandHandler('say', async (data) => {
+    window.registerCommandHandler('wait_for_user_reply', async (data) => {
       console.log('say()', data);
         if (data.event == 'running') {
           try {
