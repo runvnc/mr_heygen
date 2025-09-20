@@ -50,7 +50,7 @@ async function initializeAvatarSession() {
   window.avatar = avatar;
   console.log('Avatar instance created')
   console.log({avatarSettings})
-  delete avatarSettings['voice'];
+  avatarSettings.voice = { rate: 1 };
   console.log('hello')
   console.log({avatarSettings})
   avatar.on(StreamingEvents.STREAM_READY, handleStreamReady);
