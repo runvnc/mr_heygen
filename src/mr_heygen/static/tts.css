@@ -22,6 +22,11 @@ html, body { height: 100%; margin: 0; }
   background: #000;       /* letterbox edges */
 }
 
+#startSession {
+  text-align: center;
+  width: auto;
+}
+
 /* button keeps natural size in the middle */
 .session-toggle { flex: 0 0 auto; }
 

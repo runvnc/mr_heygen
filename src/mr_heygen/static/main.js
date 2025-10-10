@@ -33,6 +33,7 @@ function setLoading(show) {
   try {
     //const animation = document.getElementById("animation");
     //animation.style.display = show ? 'block' : 'none';
+    startButton.textContent = show ? "Loading..." : (isSessionActive ? "End Session" : "Load Avatar");
   } catch (e) {
     console.error("Error setting loading animation visibility", e);
   }
