@@ -73,6 +73,7 @@ function hideLoadingAndStartPlaying() {
     console.log("Trying to start playing")
     videoElement.style.display = 'block';
     videoElement.play().catch(console.error);
+    startButton.textContent = "End Session";
     //animation.style.display = 'none';
     setLoading(false);
   } catch (e) {
@@ -210,6 +211,7 @@ function setListen(listen) {
 async function toggleSession() {
   if (!isSessionActive) {
     setLoading(true);
+    startButton.textContent = "Loading...";
     await initializeAvatarSession();
   } else {
     console.log("Terminating session...")
@@ -223,6 +225,7 @@ console.log("Adding event listener for start session button")
 
 startButton.addEventListener("click", () => {
     console.log("Start button clicked")
+    startButton.textContent = "Loading..."
     toggleSession()
     if (addedSay) {
       console.log("added say handler already")
