@@ -23,8 +23,10 @@ html, body { height: 100%; margin: 0; }
 }
 
 #startSession {
-  text-align: center;
-  width: auto;
+    display:  block;
+    width:  200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* button keeps natural size in the middle */
