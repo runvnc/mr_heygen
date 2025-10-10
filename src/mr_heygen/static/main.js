@@ -215,6 +215,7 @@ async function toggleSession() {
     await initializeAvatarSession();
   } else {
     console.log("Terminating session...")
+    startButton.textContent = "Load Avatar"
     await terminateAvatarSession();
   }
 }
@@ -225,7 +226,6 @@ console.log("Adding event listener for start session button")
 
 startButton.addEventListener("click", () => {
     console.log("Start button clicked")
-    startButton.textContent = "Loading..."
     toggleSession()
     if (addedSay) {
       console.log("added say handler already")
