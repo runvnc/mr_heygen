@@ -14,7 +14,7 @@ const videoElement = document.getElementById("avatarVideo");
 const startButton = document.getElementById("startSession");
 const speakButton = document.getElementById("speakButton");
 const userInput = document.getElementById("userInput");
-const animation = document.getElementById("animation");
+//const animation = document.getElementById("animation");
 
 let avatar = null;
 let sessionData = null;
@@ -31,8 +31,8 @@ async function fetchAccessToken() {
 function setLoading(show) {
   return
   try {
-    const animation = document.getElementById("animation");
-    animation.style.display = show ? 'block' : 'none';
+    //const animation = document.getElementById("animation");
+    //animation.style.display = show ? 'block' : 'none';
   } catch (e) {
     console.error("Error setting loading animation visibility", e);
   }
@@ -73,7 +73,7 @@ function hideLoadingAndStartPlaying() {
     console.log("Trying to start playing")
     videoElement.style.display = 'block';
     videoElement.play().catch(console.error);
-    animation.style.display = 'none';
+    //animation.style.display = 'none';
     setLoading(false);
   } catch (e) {
     console.warn("Could not start video (maybe already playing)", e);
@@ -219,6 +219,8 @@ async function toggleSession() {
 
 let addedSay = false
 // Event listeners for buttons
+console.log("Adding event listener for start session button")
+
 startButton.addEventListener("click", () => {
     console.log("Start button clicked")
     toggleSession()
