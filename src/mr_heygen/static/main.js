@@ -220,6 +220,7 @@ async function toggleSession() {
 let addedSay = false
 // Event listeners for buttons
 startButton.addEventListener("click", () => {
+    console.log("Start button clicked")
     toggleSession()
     if (addedSay) {
       console.log("added say handler already")

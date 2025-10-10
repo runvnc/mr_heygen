@@ -27,6 +27,7 @@ html, body { height: 100%; margin: 0; }
 
 /* chat sits at the bottom at its natural height */
 chat-ai {
+  height: 200px;
   flex: 0 0 auto;         /* don’t grow */
   /* overflow-y: auto;    // uncomment if your chat can get tall and should scroll */
 }
