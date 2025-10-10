@@ -29,7 +29,6 @@ async function fetchAccessToken() {
 
 // Show/hide loading spinner
 function setLoading(show) {
-  return
   try {
     //const animation = document.getElementById("animation");
     //animation.style.display = show ? 'block' : 'none';
