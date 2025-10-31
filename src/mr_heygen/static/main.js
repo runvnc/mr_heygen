@@ -165,6 +165,10 @@ async function shutUp() {
   if (avatar) {
     try {
       await avatar.interrupt();
+      for (let ii=0; ii<20; ii++) {
+        // yellow text with blue background
+        console.log('%c shutUp called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', 'color: yellow; background-color: blue');
+      }
     } catch (e) {
       //console.error("Error interrupting avatar", e);
     }
