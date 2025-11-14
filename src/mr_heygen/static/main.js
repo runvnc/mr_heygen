@@ -81,7 +81,7 @@ function hideLoadingAndStartPlaying() {
     const request = new Request(`/chat/${window.log_id}/send`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify([{"type": "text", "text": 
-        "[SYSTEM]: [The user loaded the avatar. Introduce yourself if this is a new conversation, otherwise greet the user.]"}])
+        "[SYSTEM]: [The user loaded or re-loaded the avatar. If this is a new conversation: introduce yourself, but if you have already been speaking, greet the user and continue the conversation.]"}])
     });
     fetch(request).catch(console.error)
   } catch (e) {
