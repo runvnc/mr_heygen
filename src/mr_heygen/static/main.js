@@ -76,13 +76,18 @@ function hideLoadingAndStartPlaying() {
     startButton.textContent = "End Session";
     //animation.style.display = 'none';
     setLoading(false);
+    console.log("Sending message requesting avatar to introduce itself.")
 
     const request = new Request(`/chat/${window.log_id}/send`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({"type": "text", "text": "[SYSTEM]: [introduce yourself]"})
     });
     fetch(request).catch(console.error)
+  } catch (e) {
+    console.error("Error starting video playback", e);
   }
+}
+  
 
 // Handle when avatar stream is ready
 function handleStreamReady(event) {
