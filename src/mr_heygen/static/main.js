@@ -76,10 +76,13 @@ function hideLoadingAndStartPlaying() {
     startButton.textContent = "End Session";
     //animation.style.display = 'none';
     setLoading(false);
-  } catch (e) {
-    console.warn("Could not start video (maybe already playing)", e);
+
+    const request = new Request(`/chat/${window.log_id}/send`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({"type": "text", "text": "[SYSTEM]: [introduce yourself]"})
+    });
+    fetch(request).catch(console.error)
   }
-}
 
 // Handle when avatar stream is ready
 function handleStreamReady(event) {
